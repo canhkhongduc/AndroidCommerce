@@ -1,8 +1,9 @@
 package fu.prm391.project.androidcommerce.model;
 
 
+import java.io.Serializable;
 
-public class User {
+public class User implements Serializable{
     private int userId;
     private String userName;
     private String userPassword;
@@ -23,6 +24,14 @@ public class User {
         this.userAddress = userAddress;
         this.userTypeId = userTypeId;
         this.isDeleted = isDeleted;
+    }
+
+    public User(String userName, String userPassword, String userEmail, String userPhone, String userAddress) {
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
+        this.userAddress = userAddress;
     }
 
     public int getUserId() {
