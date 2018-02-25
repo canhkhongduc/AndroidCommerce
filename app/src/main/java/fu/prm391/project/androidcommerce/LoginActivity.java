@@ -3,6 +3,7 @@ package fu.prm391.project.androidcommerce;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivityForResult(intent, 1);
+                startActivity(intent);
             }
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -44,10 +45,14 @@ public class LoginActivity extends AppCompatActivity {
                     if(!password.equals( user.getUserPassword())){
                         Toast.makeText(LoginActivity.this,"Wrong password. Try again!", Toast.LENGTH_LONG).show();
                     } else {
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("user", user);
-                        setResult(5,intent);
-                        finish();
+                        if (user.getUserTypeId() == 0){
+                            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                            startActivity(intent);
+                        } else{
+                            Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
                     }
                 }
             }

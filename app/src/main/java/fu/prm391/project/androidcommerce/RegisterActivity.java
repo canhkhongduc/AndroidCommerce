@@ -43,7 +43,7 @@ public class RegisterActivity extends AppCompatActivity {
                    user.setUserAddress(address);
                     if(db.getUserByUsername(user.getUserName()) == null){
                         db.insertUser(user);
-                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         intent.putExtra("user", user);
                         setResult(5,intent);
                         finish();
