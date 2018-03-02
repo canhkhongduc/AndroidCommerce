@@ -8,15 +8,12 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(tableName = "Category")
+@Entity
 public class Category {
     @PrimaryKey(autoGenerate = true)
     private int categoryId;
 
-    @ColumnInfo(name = "categoryName")
     private String categoryName;
-
-    @ColumnInfo(name = "deleted")
     private boolean deleted;
 
     public Category(String categoryName, boolean deleted) {

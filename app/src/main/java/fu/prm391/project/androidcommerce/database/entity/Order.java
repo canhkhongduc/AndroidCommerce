@@ -4,8 +4,11 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 
 import java.util.Date;
+
+import fu.prm391.project.androidcommerce.database.converter.DateConverter;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -13,30 +16,20 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(tableName = "Order", foreignKeys = @ForeignKey(entity = PaymentType.class, parentColumns = "paymentTypeId", childColumns = "paymentTypeId", onDelete = CASCADE, onUpdate = CASCADE))
+@Entity(foreignKeys = @ForeignKey(entity = PaymentType.class, parentColumns = "paymentTypeId", childColumns = "paymentTypeId", onDelete = CASCADE, onUpdate = CASCADE))
 public class Order {
     @PrimaryKey(autoGenerate = true)
     private int orderId;
 
-    @ColumnInfo(name = "userId")
     private int userId;
-
-    @ColumnInfo(name = "paymentTypeId")
     private int paymentTypeId;
-
-    @ColumnInfo(name = "paymentAmount")
     private int paymentAmount;
-
-    @ColumnInfo(name = "orderDate")
+    @TypeConverters(DateConverter.class)
     private Date orderDate;
-
-    @ColumnInfo(name = "shipDate")
+    @TypeConverters(DateConverter.class)
     private Date shipDate;
-
-    @ColumnInfo(name = "paymentDate")
+    @TypeConverters(DateConverter.class)
     private Date paymentDate;
-
-    @ColumnInfo(name = "checkedOut")
     private boolean checkedOut;
 
     public Order(int userId, int paymentTypeId, int paymentAmount, Date orderDate, Date shipDate, Date paymentDate, boolean checkedOut) {

@@ -10,27 +10,16 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(tableName = "User", foreignKeys = @ForeignKey(entity = UserType.class, parentColumns = "typeId", childColumns = "userType", onDelete = CASCADE, onUpdate = CASCADE))
+@Entity(foreignKeys = @ForeignKey(entity = UserType.class, parentColumns = "typeId", childColumns = "userType", onDelete = CASCADE, onUpdate = CASCADE))
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int userId;
 
-    @ColumnInfo(name = "username")
     private String username;
-
-    @ColumnInfo(name = "password")
     private String password;
-
-    @ColumnInfo(name = "email")
     private String email;
-
-    @ColumnInfo(name = "phone")
     private String phone;
-
-    @ColumnInfo(name = "address")
     private String address;
-
-    @ColumnInfo(name = "type")
     private int userType;
 
     public User(String username, String password, String email, String phone, String address, int userType) {

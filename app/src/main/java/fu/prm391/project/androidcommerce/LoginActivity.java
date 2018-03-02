@@ -1,59 +1,85 @@
 package fu.prm391.project.androidcommerce;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
-//    private Button btnRegister;
-//    private Button btnLogin;
-//    private EditText etLoginUsername, etLoginPassword;
-//    MyHelper db;
+import fu.prm391.project.androidcommerce.controller.LoginController;
+import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
+import fu.prm391.project.androidcommerce.database.AppDatabase;
+import fu.prm391.project.androidcommerce.database.entity.User;
+
+public class LoginActivity extends AppCompatActivity implements LoginListener {
+    private Button btnRegister;
+    private Button btnLogin;
+    private EditText etLoginUsername;
+    private EditText etLoginPassword;
+    private AppDatabase db;
+    private LoginController loginController;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        btnLogin = findViewById(R.id.btnLogin);
-//        btnRegister = findViewById(R.id.btnRegister);
-//        etLoginUsername = findViewById(R.id.etLoginUsername);
-//        etLoginPassword = findViewById(R.id.etLoginPassword);
-//        db = new MyHelper(this);
-//        btnRegister.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String username = etLoginUsername.getText().toString();
-//                String password = etLoginPassword.getText().toString();
-//                User user = db.getUserByUsername(username);
-//                if(user == null){
-//                    Toast.makeText(LoginActivity.this,"User doesn't exist. Try again!", Toast.LENGTH_LONG).show();
-//                } else{
-//                    if(!password.equals( user.getUserPassword())){
-//                        Toast.makeText(LoginActivity.this,"Wrong password. Try again!", Toast.LENGTH_LONG).show();
-//                    } else {
-//                        if (user.getUserTypeId() == 0){
-//                            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-//                            startActivity(intent);
-//                        } else{
-//                            Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
-//                            intent.putExtra("user", user);
-//                            startActivity(intent);
-//                        }
-//                    }
-//                }
-//            }
-//        });
+
+        db = AppDatabase.getAppDatabase(this);
+        loginController = new LoginController(this, db);
+
+        btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
+        etLoginUsername = findViewById(R.id.etLoginUsername);
+        etLoginPassword = findViewById(R.id.etLoginPassword);
+
+        btnRegister.setOnClickListener(new btnRegisterListener());
+        btnLogin.setOnClickListener(new btnLoginListener());
     }
 
+    private class btnLoginListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            String username = etLoginUsername.getText().toString();
+            String password = etLoginPassword.getText().toString();
+
+            if (username.trim().length() == 0 || password.trim().length() == 0) {
+                Toast.makeText(LoginActivity.this, "Please enter your username and password", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            User user = new User(username, password, null, null, null, -1);
+
+            loginController.login(user); //After LoginAsyncTask finishes, login() or loginFailed() will be called
+        }
+    }
+
+    private class btnRegisterListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void login(int userId) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
+    public void loginFailed(String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

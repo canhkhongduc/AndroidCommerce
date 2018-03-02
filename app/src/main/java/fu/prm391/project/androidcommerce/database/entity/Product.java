@@ -11,30 +11,17 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(tableName = "Product", foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = CASCADE, onUpdate = CASCADE))
+@Entity(foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = CASCADE, onUpdate = CASCADE))
 public class Product {
     @PrimaryKey(autoGenerate = true)
     private int productId;
 
-    @ColumnInfo(name = "productName")
     private String productName;
-
-    @ColumnInfo(name = "productImagePath")
     private String productImagePath;
-
-    @ColumnInfo(name = "category")
     private int categoryId;
-
-    @ColumnInfo(name = "productPrice")
     private float productPrice;
-
-    @ColumnInfo(name = "productDescription")
     private String productDescription;
-
-    @ColumnInfo(name = "deleted")
     private boolean deleted;
-
-    @ColumnInfo(name = "averageRating")
     private double averageRating;
 
     public Product(String productName, String productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {

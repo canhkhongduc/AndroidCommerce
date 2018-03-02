@@ -8,12 +8,11 @@ import android.arch.persistence.room.PrimaryKey;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(tableName = "UserType")
+@Entity
 public class UserType {
     @PrimaryKey
     private int typeId;
 
-    @ColumnInfo(name = "typeName")
     private String typeName;
 
     public UserType(int typeId, String typeName) {
