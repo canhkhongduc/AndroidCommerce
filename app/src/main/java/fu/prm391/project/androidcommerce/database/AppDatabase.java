@@ -63,7 +63,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "commerce-db")
                     .addCallback(dbCallback)
+                    .allowMainThreadQueries()
                     .build();
+
         }
 
         return INSTANCE;

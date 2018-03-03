@@ -1,7 +1,9 @@
 package fu.prm391.project.androidcommerce;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -64,11 +66,20 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     }
 
     @Override
-    public void login(int userId) {
+    public void login(final int userId) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(LoginActivity.this, "Login Success", Toast.LENGTH_SHORT).show();
+                User user = db.userDAO().getUserByUserId(userId);
+                if (user.getUserType() == 1){
+                    startActivity(new Intent(LoginActivity.this,AdminHomeActivity.class));
+                } else {
+                    SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                    SharedPreferences.Editor preferenceEditor = preference.edit();
+                    preferenceEditor.putInt("userId", user.getUserId()).apply();
+                    Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }

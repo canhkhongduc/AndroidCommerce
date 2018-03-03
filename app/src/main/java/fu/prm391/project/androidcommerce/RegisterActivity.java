@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterListe
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
             }
         });
     }
