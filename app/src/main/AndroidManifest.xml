@@ -22,8 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdminHomeActivity" />
-        <activity android:name=".CustomerHomeActivity"></activity>
+        <activity android:name=".adminActivity.AdminHomeActivity" />
+        <activity android:name=".customerActivity.CustomerHomeActivity" />
+        <activity android:name=".customerActivity.ProductDetailActivity"></activity>
     </application>
 
 </manifest>

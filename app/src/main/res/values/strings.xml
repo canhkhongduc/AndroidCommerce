@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">AndroidCommerce</string>
+    <string name="currency">VND</string>
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
@@ -19,4 +20,10 @@
     <string name="phone">Phone</string>
     <string name="address">Address</string>
     <string name="signup">Sign up</string>
+    <string name="detail">Details</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="buy_now">Buy now</string>
+    <string name="customer">Customer</string>
+    <string name="admin">Admin</string>
+    <string name="product">Product</string>
 </resources>

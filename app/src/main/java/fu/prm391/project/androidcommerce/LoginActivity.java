@@ -10,8 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import fu.prm391.project.androidcommerce.adminActivity.AdminHomeActivity;
 import fu.prm391.project.androidcommerce.controller.LoginController;
 import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
+import fu.prm391.project.androidcommerce.customerActivity.CustomerHomeActivity;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
 

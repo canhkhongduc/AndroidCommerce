@@ -17,14 +17,14 @@ public class Product {
     private int productId;
 
     private String productName;
-    private String productImagePath;
+    private int productImagePath;
     private int categoryId;
     private float productPrice;
     private String productDescription;
     private boolean deleted;
     private double averageRating;
 
-    public Product(String productName, String productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {
+    public Product(String productName, int productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {
         this.productName = productName;
         this.productImagePath = productImagePath;
         this.categoryId = categoryId;
@@ -58,11 +58,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getProductImagePath() {
+    public int getProductImagePath() {
         return productImagePath;
     }
 
-    public void setProductImagePath(String productImagePath) {
+    public void setProductImagePath(int productImagePath) {
         this.productImagePath = productImagePath;
     }
 
