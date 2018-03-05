@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.adapter;
+package fu.prm391.project.androidcommerce.utils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.database.entity.Product;
 
 /**
  * Created by Khổng Cảnh on 3/3/2018.

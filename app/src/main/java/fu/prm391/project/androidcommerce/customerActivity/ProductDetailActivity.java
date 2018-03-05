@@ -5,11 +5,16 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import fu.prm391.project.androidcommerce.LoginActivity;
 import fu.prm391.project.androidcommerce.R;
@@ -17,6 +22,7 @@ import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Category;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
 import fu.prm391.project.androidcommerce.database.entity.Product;
+import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class ProductDetailActivity extends AppCompatActivity {
     private AppDatabase db;
@@ -57,9 +63,23 @@ public class ProductDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(ProductDetailActivity.this, "Item added to cart", Toast.LENGTH_LONG).show();
                 OrderItem orderItem = new OrderItem(-1,product.getProductId(), 1);
-                SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(ProductDetailActivity.this);
-                SharedPreferences.Editor preferenceEditor = preference.edit();
-
+                SharedPreferenceUtil util = new SharedPreferenceUtil();
+                ArrayList<OrderItem> orderItems = util.getCart(ProductDetailActivity.this, "cartItem");;
+                if (orderItems == null) {
+                    orderItems = new ArrayList<>();
+                    orderItems.add(orderItem);
+                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
+                } else if(orderItems.contains(orderItem)){
+                    orderItems.remove(orderItem);
+                    orderItem.setQuantity(orderItem.getQuantity() + 1);
+                    orderItems.add(orderItem);
+                    util.removePreference(ProductDetailActivity.this, "cartItem");
+                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
+                } else {
+                    orderItems.add(orderItem);
+                    util.removePreference(ProductDetailActivity.this, "cartItem");
+                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
+                }
             }
         });
         btnBuyNow.setOnClickListener(new View.OnClickListener() {
@@ -69,4 +89,5 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
     }
+
 }

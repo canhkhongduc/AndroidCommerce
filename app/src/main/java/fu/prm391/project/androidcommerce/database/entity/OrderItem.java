@@ -24,6 +24,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+
     public int getOrderId() {
         return orderId;
     }
@@ -46,5 +47,19 @@ public class OrderItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean isEqual = false;
+        if (obj != null && obj instanceof OrderItem){
+            isEqual = (this.productId == ((OrderItem)obj).productId);
+        }
+        return isEqual;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.productId;
     }
 }
