@@ -32,7 +32,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
-        Toast.makeText(ProductDetailActivity.this,"product",Toast.LENGTH_LONG).show();
         ivProduct = (ImageView) findViewById(R.id.ivProductDetail);
         tvProductName = (TextView) findViewById(R.id.tvProductNameDetail);
         tvCategoryName = (TextView) findViewById(R.id.tvCategoryDetail);

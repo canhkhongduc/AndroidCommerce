@@ -26,7 +26,6 @@ public class CustomerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home);
-        Toast.makeText(CustomerHomeActivity.this,"customer",Toast.LENGTH_LONG).show();
         cardList = (RecyclerView) findViewById(R.id.cardList);
         cardList.setHasFixedSize(true);
         db = AppDatabase.getAppDatabase(this);
