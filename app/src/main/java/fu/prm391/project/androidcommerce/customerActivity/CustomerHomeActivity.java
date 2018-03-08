@@ -57,7 +57,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
         super.onResume();
         SharedPreferenceUtil util = new SharedPreferenceUtil();
         ArrayList<OrderItem> orderItems = util.getCart(CustomerHomeActivity.this, "cartItem");
-        if (orderItems.size() > 0){
+        if (orderItems != null && orderItems.size() > 0){
             tvCart.setText(""+orderItems.size());
         }
     }

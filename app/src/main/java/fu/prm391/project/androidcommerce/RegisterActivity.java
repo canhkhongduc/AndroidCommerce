@@ -1,6 +1,7 @@
 package fu.prm391.project.androidcommerce;
 
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,11 +15,11 @@ import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterListener {
-    private EditText etUsername;
-    private EditText etPassword;
-    private EditText etEmail;
-    private EditText etPhone;
-    private EditText etAddress;
+    private TextInputLayout etUsername;
+    private TextInputLayout etPassword;
+    private TextInputLayout etEmail;
+    private TextInputLayout etPhone;
+    private TextInputLayout etAddress;
     private Button btnSignup;
     private AppDatabase db;
     private RegisterController registerController;
@@ -44,11 +45,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterListe
     private class btnSignupListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String username = etUsername.getText().toString();
-            String password = etPassword.getText().toString();
-            String email = etEmail.getText().toString();
-            String phone = etPhone.getText().toString();
-            String address = etAddress.getText().toString();
+            String username = etUsername.getEditText().getText().toString();
+            String password = etPassword.getEditText().getText().toString();
+            String email = etEmail.getEditText().getText().toString();
+            String phone = etPhone.getEditText().getText().toString();
+            String address = etAddress.getEditText().getText().toString();
 
             if (username.trim().length() == 0 || password.trim().length() == 0 || email.trim().length() == 0 || phone.trim().length() == 0 || address.trim().length() == 0) {
                 Toast.makeText(RegisterActivity.this, "Please fill all the credentials!", Toast.LENGTH_LONG).show();

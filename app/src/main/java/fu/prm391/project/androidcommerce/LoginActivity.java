@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import fu.prm391.project.androidcommerce.adminActivity.AdminHomeActivity;
@@ -18,10 +20,10 @@ import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
 
 public class LoginActivity extends AppCompatActivity implements LoginListener {
-    private Button btnRegister;
+    private TextView btnRegister;
     private Button btnLogin;
-    private EditText etLoginUsername;
-    private EditText etLoginPassword;
+    private TextInputLayout etLoginUsername;
+    private TextInputLayout etLoginPassword;
     private AppDatabase db;
     private LoginController loginController;
 
@@ -34,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
         loginController = new LoginController(this, db);
 
         btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
+        btnRegister = findViewById(R.id.txtRegister);
         etLoginUsername = findViewById(R.id.etLoginUsername);
         etLoginPassword = findViewById(R.id.etLoginPassword);
 
@@ -45,8 +47,8 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     private class btnLoginListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String username = etLoginUsername.getText().toString();
-            String password = etLoginPassword.getText().toString();
+            String username = etLoginUsername.getEditText().getText().toString();
+            String password = etLoginPassword.getEditText().getText().toString();
 
             if (username.trim().length() == 0 || password.trim().length() == 0) {
                 Toast.makeText(LoginActivity.this, "Please enter your username and password", Toast.LENGTH_LONG).show();
