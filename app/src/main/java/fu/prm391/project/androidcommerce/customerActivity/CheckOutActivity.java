@@ -21,6 +21,7 @@ public class CheckOutActivity extends AppCompatActivity {
     private RecyclerView checkoutCardView;
     private List<OrderItem> orderItems;
     private AppDatabase db;
+    OrderItemAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,6 @@ public class CheckOutActivity extends AppCompatActivity {
 
         SharedPreferenceUtil util = new SharedPreferenceUtil();
         orderItems = util.getCart(this,"cartItem");
-
         CustomCheckOutListener listener = new CustomCheckOutListener() {
             @Override
             public void onItemEdit(View view, int position) {
@@ -42,11 +42,11 @@ public class CheckOutActivity extends AppCompatActivity {
             }
             public void onItemRemove(View view, int position){
                 orderItems.remove(position);
-
+                adapter.notifyDataSetChanged();
             }
         };
-        OrderItemAdapter adapter = new OrderItemAdapter(orderItems, CheckOutActivity.this, listener);
-        adapter.notifyDataSetChanged();
+        adapter = new OrderItemAdapter(orderItems, CheckOutActivity.this, listener);
         checkoutCardView.setAdapter(adapter);
+
     }
 }
