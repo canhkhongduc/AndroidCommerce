@@ -26,4 +26,7 @@
     <string name="customer">Customer</string>
     <string name="admin">Admin</string>
     <string name="product">Product</string>
+    <string name="edit">Edit</string>
+    <string name="remove">Remove</string>
+    <string name="check_out">Check out</string>
 </resources>

@@ -1,22 +1,16 @@
 package fu.prm391.project.androidcommerce.customerActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
-import fu.prm391.project.androidcommerce.LoginActivity;
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Category;
@@ -45,7 +39,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvProductDescription = (TextView) findViewById(R.id.tvProductDescription);
         tvProductRating = (TextView) findViewById(R.id.tvRating);
         Intent intent = getIntent();
-        int productId = intent.getIntExtra("productId",0);
+        final int productId = intent.getIntExtra("productId",0);
         db = AppDatabase.getAppDatabase(this);
         final Product product = db.productDAO().getProductByProductId(productId);
         Category category = db.categoryDAO().getCategoryByCategoryId(product.getCategoryId());
@@ -85,7 +79,9 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ProductDetailActivity.this, "Item added to Buy now", Toast.LENGTH_LONG).show();
+                Intent intent1 = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
+                intent1.putExtra("productId", productId);
+                startActivity(intent1);
             }
         });
     }

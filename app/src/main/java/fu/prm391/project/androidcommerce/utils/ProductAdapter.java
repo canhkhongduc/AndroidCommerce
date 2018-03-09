@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.controller.listener.CustomItemClickListener;
+import fu.prm391.project.androidcommerce.controller.listener.CustomCheckOutListener;
+import fu.prm391.project.androidcommerce.controller.listener.CustomProductViewListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 
@@ -23,10 +24,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     private List<Product> listProducts;
     private AppDatabase db;
     private Context context;
-    private final CustomItemClickListener listener;
+    private final CustomProductViewListener listener;
 
 
-    public ProductAdapter(List<Product> listProducts, Context context, CustomItemClickListener listener){
+    public ProductAdapter(List<Product> listProducts, Context context, CustomProductViewListener listener){
         this.listProducts = listProducts;
         this.context = context;
         this.listener = listener;
