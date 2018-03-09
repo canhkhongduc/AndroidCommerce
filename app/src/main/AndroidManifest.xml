@@ -30,7 +30,7 @@
         <activity android:name=".adminActivity.AdminHomeActivity" />
         <activity android:name=".customerActivity.CheckOutActivity" />
         <activity android:name=".customerActivity.CustomerHomeActivity" />
-        <activity android:name=".customerActivity.ProductDetailActivity"></activity>
+        <activity android:name=".customerActivity.ProductDetailActivity" />
     </application>
 
 </manifest>

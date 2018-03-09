@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff8a50</color>
-    <color name="colorPrimaryDark">#c41c00</color>
+    <color name="colorPrimary">#ffb350</color>
+    <color name="colorPrimaryDark">#f92805</color>
     <color name="colorAccent">#ff5722</color>
+    <color name="colorAddToCart">#22fce702</color>
 </resources>
