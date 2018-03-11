@@ -1,14 +1,12 @@
-package fu.prm391.project.androidcommerce.customerActivity;
+package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.design.widget.BottomSheetDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -30,7 +28,7 @@ import fu.prm391.project.androidcommerce.utils.ArrayListUtil;
 import fu.prm391.project.androidcommerce.utils.OrderItemAdapter;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
-public class CheckOutActivity extends AppCompatActivity {
+public class CheckOutActivity extends BaseCustomerActivity {
     private RecyclerView checkoutCardView;
     private List<OrderItem> orderItems;
     private AppDatabase db;

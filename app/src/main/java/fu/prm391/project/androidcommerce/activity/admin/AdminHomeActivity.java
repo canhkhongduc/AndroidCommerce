@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.adminActivity;
+package fu.prm391.project.androidcommerce.activity.admin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

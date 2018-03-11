@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#123"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".customerActivity.CustomerHomeActivity"
+    tools:context=".activity.customer.CustomerHomeActivity"
     tools:showIn="@layout/activity_customer_home">
 
     <android.support.v7.widget.RecyclerView

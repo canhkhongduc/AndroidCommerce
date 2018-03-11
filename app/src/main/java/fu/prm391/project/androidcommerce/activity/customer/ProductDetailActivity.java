@@ -1,7 +1,6 @@
-package fu.prm391.project.androidcommerce.customerActivity;
+package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +17,7 @@ import fu.prm391.project.androidcommerce.database.entity.OrderItem;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
-public class ProductDetailActivity extends AppCompatActivity {
+public class ProductDetailActivity extends BaseCustomerActivity {
     private AppDatabase db;
     private ImageView ivProduct;
     private TextView tvProductName;

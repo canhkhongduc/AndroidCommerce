@@ -4,34 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fu.prm391.project.androidcommerce.customerActivity.CustomerHomeActivity">
-
-    <TextView
-        android:id="@+id/tvCustomer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:text="@string/customer"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="147dp" />
+    tools:context="fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/tvCustomer"
-        android:layout_marginTop="23dp" />
-
-    <TextView
-        android:id="@+id/tvCart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="12dp"
-        android:layout_toStartOf="@+id/tvCustomer"
-        android:text="cart "
-        android:textSize="15dp" />
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

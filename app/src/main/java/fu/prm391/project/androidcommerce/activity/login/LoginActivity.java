@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce;
+package fu.prm391.project.androidcommerce.activity.login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,16 +8,17 @@ import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fu.prm391.project.androidcommerce.adminActivity.AdminHomeActivity;
+import fu.prm391.project.androidcommerce.R;
+import fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity;
 import fu.prm391.project.androidcommerce.controller.LoginController;
 import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
-import fu.prm391.project.androidcommerce.customerActivity.CustomerHomeActivity;
+import fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
+import fu.prm391.project.androidcommerce.database.utils.DatabaseInitializer;
 
 public class LoginActivity extends AppCompatActivity implements LoginListener {
     private TextView btnRegister;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
         setContentView(R.layout.activity_login);
 
         db = AppDatabase.getAppDatabase(this);
+
         loginController = new LoginController(this, db);
 
         btnLogin = findViewById(R.id.btnLogin);
@@ -75,8 +77,8 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
             @Override
             public void run() {
                 User user = db.userDAO().getUserByUserId(userId);
-                if (user.getUserType() == 1){
-                    startActivity(new Intent(LoginActivity.this,AdminHomeActivity.class));
+                if (user.getUserType() == 1) {
+                    startActivity(new Intent(LoginActivity.this, AdminHomeActivity.class));
                 } else {
                     SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
                     SharedPreferences.Editor preferenceEditor = preference.edit();
