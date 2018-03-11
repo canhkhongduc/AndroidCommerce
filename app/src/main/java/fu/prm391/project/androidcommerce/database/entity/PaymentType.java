@@ -10,13 +10,12 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class PaymentType {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int paymentTypeId;
 
     private String paymentTypeName;
 
-    public PaymentType(int paymentTypeId, String paymentTypeName) {
-        this.paymentTypeId = paymentTypeId;
+    public PaymentType(String paymentTypeName) {
         this.paymentTypeName = paymentTypeName;
     }
 

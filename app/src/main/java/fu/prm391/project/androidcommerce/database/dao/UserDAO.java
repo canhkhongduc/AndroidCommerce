@@ -39,4 +39,7 @@ public interface UserDAO {
 
     @Delete
     void delete(User user);
+
+    @Query("UPDATE User SET userType= :userType WHERE userId = :userId")
+    public abstract int updateUserType(int userId, int userType);
 }

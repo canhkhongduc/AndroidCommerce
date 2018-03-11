@@ -23,7 +23,7 @@ public class Order {
 
     private int userId;
     private int paymentTypeId;
-    private int paymentAmount;
+    private double paymentAmount;
     @TypeConverters(DateConverter.class)
     private Date orderDate;
     @TypeConverters(DateConverter.class)
@@ -32,7 +32,7 @@ public class Order {
     private Date paymentDate;
     private boolean checkedOut;
 
-    public Order(int userId, int paymentTypeId, int paymentAmount, Date orderDate, Date shipDate, Date paymentDate, boolean checkedOut) {
+    public Order(int userId, int paymentTypeId, double paymentAmount, Date orderDate, Date shipDate, Date paymentDate, boolean checkedOut) {
         this.userId = userId;
         this.paymentTypeId = paymentTypeId;
         this.paymentAmount = paymentAmount;
@@ -66,11 +66,11 @@ public class Order {
         this.paymentTypeId = paymentTypeId;
     }
 
-    public int getPaymentAmount() {
+    public double getPaymentAmount() {
         return paymentAmount;
     }
 
-    public void setPaymentAmount(int paymentAmount) {
+    public void setPaymentAmount(double paymentAmount) {
         this.paymentAmount = paymentAmount;
     }
 

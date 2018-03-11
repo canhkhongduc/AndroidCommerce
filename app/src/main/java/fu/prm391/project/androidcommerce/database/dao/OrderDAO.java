@@ -1,6 +1,13 @@
 package fu.prm391.project.androidcommerce.database.dao;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
+
+import java.util.List;
+
+import fu.prm391.project.androidcommerce.database.entity.Order;
 
 /**
  * Created by Lam on 2/28/2018.
@@ -8,4 +15,22 @@ import android.arch.persistence.room.Dao;
 
 @Dao
 public interface OrderDAO {
+    @Query("SELECT * FROM `Order`")
+    List<Order> getAll();
+
+    @Query("SELECT * FROM `Order` WHERE orderId = :orderId")
+    Order getOrderByOrderId(int orderId);
+
+    @Query("SELECT * FROM `Order` WHERE userId = :userId AND orderId = (SELECT MAX(orderId) FROM `Order` WHERE userId = :userId)")
+    Order getLastInsertedOrder(int userId);
+
+
+    @Insert
+    void insert(Order... order);
+
+    @Insert
+    void insert(List<Order> orders);
+
+    @Delete
+    void delete(Order order);
 }
