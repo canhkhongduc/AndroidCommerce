@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,11 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.controller.listener.CustomProductViewListener;
+import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListener;
 import fu.prm391.project.androidcommerce.database.entity.Category;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
 import fu.prm391.project.androidcommerce.utils.ProductAdapter;
-import fu.prm391.project.androidcommerce.controller.listener.CustomCheckOutListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
@@ -30,7 +30,6 @@ public class CustomerHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_home);
-
         tvCart = findViewById(R.id.tvCart);
         cardList = (RecyclerView) findViewById(R.id.cardList);
         cardList.setHasFixedSize(true);
@@ -75,7 +74,7 @@ public class CustomerHomeActivity extends AppCompatActivity {
             db.productDAO().insert(product8);
             listProducts = db.productDAO().getAll();
         }
-        ProductAdapter adapter = new ProductAdapter(listProducts, CustomerHomeActivity.this, new CustomProductViewListener() {
+        ProductAdapter adapter = new ProductAdapter(listProducts, CustomerHomeActivity.this, new CustomCardViewListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(CustomerHomeActivity.this, ProductDetailActivity.class);
@@ -97,5 +96,4 @@ public class CustomerHomeActivity extends AppCompatActivity {
             tvCart.setText(""+orderItems.size());
         }
     }
-
 }

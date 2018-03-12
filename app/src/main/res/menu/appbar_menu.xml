@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.app" >
+
+    <item
+        android:id="@+id/ivCustomer"
+        android:icon="@drawable/ic_person_black_24dp"
+        app:showAsAction="ifRoom"
+        android:title="Profile">
+    </item>
+    <item
+        android:id="@+id/ivCart"
+        android:icon="@drawable/cart_icon"
+        app:showAsAction="ifRoom|withText"
+        android:title="Cart">
+    </item>
+</menu>

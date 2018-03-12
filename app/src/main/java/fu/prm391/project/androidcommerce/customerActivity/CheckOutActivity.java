@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
@@ -127,8 +129,9 @@ public class CheckOutActivity extends AppCompatActivity {
         btnCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Date currentTime = Calendar.getInstance().getTime();
                 Order order = new Order(userId, 1, listUtil.getTotalFromList(CheckOutActivity.this, orderItems),
-                        null, null, null, true);
+                        currentTime, null, null, true);
                 db.orderDAO().insert(order);
                 Order order1 = db.orderDAO().getLastInsertedOrder(userId);
                 for (OrderItem orderItem: orderItems) {

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <item android:id="@+id/nav_user"
+        android:title="User"
+        android:drawableLeft="@drawable/ic_person_black_24dp"
+        android:drawablePadding="2dp"
+        android:singleLine="true"
+        android:layout_gravity="center"/>
+    <item android:id="@+id/nav_category"
+        android:title="Category" />
+    <item android:id="@+id/nav_product"
+        android:title="Product" />
+    <item android:id="@+id/nav_order"
+        android:title="Order" />
+</menu>

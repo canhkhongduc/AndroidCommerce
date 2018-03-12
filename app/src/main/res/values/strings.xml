@@ -29,4 +29,11 @@
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="check_out">Check out</string>
+    <string name="order_id">OrderId</string>
+    <string name="products_number">No of products</string>
+    <string name="order_status">Order status</string>
+    <string name="completed">Completed</string>
+    <string name="price">Price</string>
+    <string name="order_date">Order date</string>
+    <string name="view">View</string>
 </resources>
