@@ -23,6 +23,7 @@ import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.database.entity.Review;
 import fu.prm391.project.androidcommerce.database.entity.User;
 import fu.prm391.project.androidcommerce.database.entity.UserType;
+import fu.prm391.project.androidcommerce.database.utils.DatabaseInitializer;
 
 /**
  * Created by Lam on 2/28/2018.
@@ -49,23 +50,20 @@ public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserTypeDAO userTypeDAO();
 
+    private static DatabaseInitializer initializer;
+
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
-            RoomDatabase.Callback dbCallback = new RoomDatabase.Callback(){
-                @Override
-                public void onCreate(@NonNull SupportSQLiteDatabase db) {
-                    super.onCreate(db);
-
-                    db.execSQL("INSERT INTO UserType VALUES(1, 'Admin')");
-                    db.execSQL("INSERT INTO UserType VALUES(2, 'User')");
-                }
-            };
-
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "commerce-db")
-                    .addCallback(dbCallback)
                     .allowMainThreadQueries()
                     .build();
 
+            initializer = new DatabaseInitializer(INSTANCE);
+
+            //init functions have empty checks
+            initializer.initUserType();
+            initializer.initCategory();
+            initializer.initProduct();
         }
 
         return INSTANCE;

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
@@ -50,8 +51,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
         Product product = listProducts.get(position);
         holder.ivProduct.setImageResource(product.getProductImagePath());
         holder.tvProductName.setText(product.getProductName());
-        holder.tvProductPrice.setText(product.getProductPrice() + "00 VND");
-        holder.tvCategoryName.setText(db.categoryDAO().getCategoryByCategoryId(product.getCategoryId()).getCategoryName());
+        holder.tvProductPrice.setText(new DecimalFormat("#,###.##").format(product.getProductPrice()) + "đ");
     }
 
     @Override

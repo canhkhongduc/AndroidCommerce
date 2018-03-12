@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce;
+package fu.prm391.project.androidcommerce.activity.login;
 
 import android.content.Intent;
 import android.support.design.widget.TextInputLayout;
@@ -6,9 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
+import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.controller.RegisterController;
 import fu.prm391.project.androidcommerce.controller.listener.RegisterListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
