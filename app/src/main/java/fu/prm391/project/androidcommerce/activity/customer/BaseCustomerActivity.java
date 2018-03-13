@@ -6,8 +6,10 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import fu.prm391.project.androidcommerce.R;
+import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 /**
  * Created by Lam on 3/12/2018.
@@ -32,9 +34,12 @@ public class BaseCustomerActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.cart:
-                Intent intent1 = new Intent(BaseCustomerActivity.this, CheckOutActivity.class);
-                startActivity(intent1);
-                break;
+                SharedPreferenceUtil util = new SharedPreferenceUtil();
+                if(util.getCart(this,"cartItem") != null) {
+                    Intent intent1 = new Intent(BaseCustomerActivity.this, CheckOutActivity.class);
+                    startActivity(intent1);
+                    break;
+                } else Toast.makeText(this,"Cart empty!", Toast.LENGTH_LONG).show();
         }
 
         return super.onOptionsItemSelected(item);

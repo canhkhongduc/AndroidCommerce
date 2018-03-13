@@ -31,6 +31,7 @@
         <activity android:name=".activity.customer.CheckOutActivity" />
         <activity android:name=".activity.customer.CustomerHomeActivity" />
         <activity android:name=".activity.customer.ProductDetailActivity" />
+        <activity android:name=".activity.admin.AdminViewOrderActivity"></activity>
     </application>
 
 </manifest>

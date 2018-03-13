@@ -26,7 +26,6 @@ public class ProductDetailActivity extends BaseCustomerActivity {
     private TextView tvProductDescription;
     private TextView tvProductRating;
     private Button btnAddToCart;
-    private Button btnBuyNow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +49,6 @@ public class ProductDetailActivity extends BaseCustomerActivity {
         tvProductDescription.setText(product.getProductDescription());
 
         btnAddToCart = findViewById(R.id.btnAddToCart);
-        btnBuyNow = findViewById(R.id.btnBuyNow);
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,14 +71,6 @@ public class ProductDetailActivity extends BaseCustomerActivity {
                     util.removePreference(ProductDetailActivity.this, "cartItem");
                     util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
                 }
-            }
-        });
-        btnBuyNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
-                intent1.putExtra("productId", productId);
-                startActivity(intent1);
             }
         });
     }

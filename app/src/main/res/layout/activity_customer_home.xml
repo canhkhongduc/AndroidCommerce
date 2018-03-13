@@ -9,25 +9,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fu.prm391.project.androidcommerce.customerActivity.CustomerHomeActivity">
-    <ImageView
-        android:id="@+id/ivCustomer"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:background="@color/cardview_light_background"
-        android:src="@drawable/ic_person_black_24dp"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="147dp"
-        android:tint="@color/colorAccent"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/ivCustomer"
-        android:layout_marginTop="23dp" />
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/tvCart"

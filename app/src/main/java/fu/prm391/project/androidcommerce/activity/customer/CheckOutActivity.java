@@ -66,7 +66,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
         llm.setOrientation(LinearLayout.VERTICAL);
         checkoutCardView.setLayoutManager(llm);
 
-        SharedPreferenceUtil util = new SharedPreferenceUtil();
+        final SharedPreferenceUtil util = new SharedPreferenceUtil();
         orderItems = util.getCart(this,"cartItem");
         final ArrayListUtil listUtil = new ArrayListUtil();
         double total = listUtil.getTotalFromList(this, orderItems);
@@ -136,6 +136,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
                     orderItem.setOrderId(order1.getOrderId());
                     db.orderItemDAO().insert(orderItem);
                 }
+                util.destroyPreference(CheckOutActivity.this);
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(CheckOutActivity.this, CustomerHomeActivity.class));
             }
