@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/r"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fu.prm391.project.androidcommerce.activity.admin.AdminAddProductActivity">
+
+    <EditText
+        android:id="@+id/etAddProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/product_name"
+        android:inputType="textPersonName"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorAccent"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/etAddProductDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rgCategoryGroup"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="@string/product_description"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etAddPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etAddProductDescription"
+        android:ems="10"
+        android:hint="@string/product_price"
+        android:inputType="textPersonName" />
+
+    <RadioGroup
+        android:id="@+id/rgCategoryGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etAddProductName"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="12dp" />
+
+    <ImageView
+        android:id="@+id/ivAddProductImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/etAddPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        app:srcCompat="@drawable/default_product" />
+
+    <Button
+        android:id="@+id/btnAddProductConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:text="@string/add_product"
+        android:textColor="@android:color/background_light" />
+
+</RelativeLayout>

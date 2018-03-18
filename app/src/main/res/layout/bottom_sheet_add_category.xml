@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvPriceEditCart"
+        android:layout_gravity="center"
+        android:background="#ffc299" />
+
+    <EditText
+        android:id="@+id/etAddCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/view1"
+        android:layout_marginTop="22dp"
+        android:ems="10"
+        android:hint="@string/category"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btnAddCategoryConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etAddCategory"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/add_category"
+        android:textColor="@android:color/background_light"
+        android:textSize="16sp" />
+</RelativeLayout>

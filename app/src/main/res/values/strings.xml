@@ -36,4 +36,12 @@
     <string name="price">Price</string>
     <string name="order_date">Order date</string>
     <string name="view">View</string>
+    <string name="product_name">Product name</string>
+    <string name="product_description">Product description</string>
+    <string name="cat_girl">Girl</string>
+    <string name="cat_car">Car</string>
+    <string name="product_price">Price</string>
+    <string name="add_category">Add category</string>
+    <string name="category">Category</string>
+    <string name="add_product">Add product</string>
 </resources>

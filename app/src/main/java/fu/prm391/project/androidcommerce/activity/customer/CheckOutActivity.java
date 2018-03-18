@@ -27,7 +27,7 @@ import fu.prm391.project.androidcommerce.database.entity.PaymentType;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.database.entity.User;
 import fu.prm391.project.androidcommerce.utils.ArrayListUtil;
-import fu.prm391.project.androidcommerce.utils.OrderItemAdapter;
+import fu.prm391.project.androidcommerce.utils.customer.OrderItemAdapter;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class CheckOutActivity extends BaseCustomerActivity {

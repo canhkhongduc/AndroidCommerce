@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils;
+package fu.prm391.project.androidcommerce.utils.customer;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +13,7 @@ import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListe
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Order;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
-import fu.prm391.project.androidcommerce.database.entity.Product;
+import fu.prm391.project.androidcommerce.utils.ArrayListUtil;
 
 /**
  * Created by Khổng Cảnh on 3/11/2018.

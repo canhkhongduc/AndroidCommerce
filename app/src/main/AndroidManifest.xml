@@ -31,7 +31,12 @@
         <activity android:name=".activity.customer.CheckOutActivity" />
         <activity android:name=".activity.customer.CustomerHomeActivity" />
         <activity android:name=".activity.customer.ProductDetailActivity" />
-        <activity android:name=".activity.admin.AdminViewOrderActivity"></activity>
+        <activity android:name=".activity.admin.AdminViewOrderActivity" />
+        <activity android:name=".activity.admin.AdminViewProductActivity" />
+        <activity android:name=".activity.admin.AdminAddProductActivity" />
+        <activity android:name=".activity.admin.AdminViewCategoryActivity" />
+        <activity android:name=".activity.admin.AdminViewUserActivity" />
+        <activity android:name=".activity.admin.BaseAdminActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
-package fu.prm391.project.androidcommerce.utils;
+package fu.prm391.project.androidcommerce.utils.customer;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemViewHolder> 
         db = AppDatabase.getAppDatabase(context);
         OrderItem orderItem = listOrderItems.get(position);
         Product product = db.productDAO().getProductByProductId(orderItem.getProductId());
-        holder.ivProductCheckOut.setImageResource(product.getProductImagePath());
+        holder.ivProductCheckOut.setImageURI(Uri.parse(product.getProductImagePath()));
         holder.tvProductNameCheckOut.setText(product.getProductName());
         holder.tvProductPriceCheckOut.setText(product.getProductPrice() + "00 VND");
         holder.tvProductDescriptionCheckOut.setText(product.getProductDescription());

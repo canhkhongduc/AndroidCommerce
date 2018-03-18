@@ -62,6 +62,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
             //init functions have empty checks
             initializer.initUserType();
+            initializer.initAdmin();
             initializer.initCategory();
             initializer.initProduct();
         }

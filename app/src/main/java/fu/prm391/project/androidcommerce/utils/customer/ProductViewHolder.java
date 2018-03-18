@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils;
+package fu.prm391.project.androidcommerce.utils.customer;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

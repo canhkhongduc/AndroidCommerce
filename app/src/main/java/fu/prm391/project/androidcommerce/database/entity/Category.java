@@ -44,4 +44,24 @@ public class Category {
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
     }
+
+    @Override
+    public String toString() {
+        return categoryName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Category category = (Category) o;
+
+        return categoryName.equals(category.categoryName);
+    }
+
+    @Override
+    public int hashCode() {
+        return categoryName.hashCode();
+    }
 }

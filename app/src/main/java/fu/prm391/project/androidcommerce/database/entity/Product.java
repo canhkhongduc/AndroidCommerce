@@ -4,6 +4,7 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
+import android.net.Uri;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
 
@@ -17,14 +18,14 @@ public class Product {
     private int productId;
 
     private String productName;
-    private int productImagePath;
+    private String productImagePath;
     private int categoryId;
     private float productPrice;
     private String productDescription;
     private boolean deleted;
     private double averageRating;
 
-    public Product(String productName, int productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {
+    public Product(String productName, String productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {
         this.productName = productName;
         this.productImagePath = productImagePath;
         this.categoryId = categoryId;
@@ -58,11 +59,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public int getProductImagePath() {
+    public String getProductImagePath() {
         return productImagePath;
     }
 
-    public void setProductImagePath(int productImagePath) {
+    public void setProductImagePath(String productImagePath) {
         this.productImagePath = productImagePath;
     }
 

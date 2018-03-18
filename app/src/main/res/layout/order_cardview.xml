@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/order_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    card_view:cardCornerRadius="4dp"
+    android:layout_margin="5dp"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivProductViewOrder"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/product" />
+
+        <TextView
+            android:id="@+id/tvProductNameViewOrder"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/ivProductViewOrder"
+            android:text="abc"
+            android:textAlignment="center"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvDescriptionViewOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvProductNameViewOrder"
+            android:layout_below="@+id/tvProductNameViewOrder"
+            android:text="abc"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tvPriceViewOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvDescriptionViewOrder"
+            android:layout_below="@+id/tvDescriptionViewOrder"
+            android:text="123"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvPriceViewOrder"
+            android:layout_below="@+id/tvPriceViewOrder"
+            android:text="Qty"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/tvQuantityViewOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignEnd="@+id/tvProductNameViewOrder" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

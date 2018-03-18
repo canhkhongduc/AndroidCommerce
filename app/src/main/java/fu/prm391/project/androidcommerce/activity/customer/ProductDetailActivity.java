@@ -1,6 +1,7 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +42,7 @@ public class ProductDetailActivity extends BaseCustomerActivity {
         db = AppDatabase.getAppDatabase(this);
         final Product product = db.productDAO().getProductByProductId(productId);
         Category category = db.categoryDAO().getCategoryByCategoryId(product.getCategoryId());
-        ivProduct.setImageResource(product.getProductImagePath());
+        ivProduct.setImageURI(Uri.parse(product.getProductImagePath()));
         tvProductName.setText(product.getProductName());
         tvProductPrice.setText("" + product.getProductPrice() + "00 VND");
         tvCategoryName.setText(category.getCategoryName());

@@ -2,17 +2,17 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity">
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
+    tools:context="fu.prm391.project.androidcommerce.activity.admin.BaseAdminActivity">
+    <android.support.design.widget.NavigationView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/orderList"/>
-    <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:id="@+id/navigation_view"
+        app:menu="@menu/admin_nav_menu"
+        app:headerLayout="@layout/nav_header"
+        android:layout_gravity="start">
+
+    </android.support.design.widget.NavigationView>
+
 </android.support.v4.widget.DrawerLayout>
