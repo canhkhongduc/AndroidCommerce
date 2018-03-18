@@ -1,12 +1,19 @@
 package fu.prm391.project.androidcommerce.utils.customer;
 
+import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -50,6 +57,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductViewHolder> {
     public void onBindViewHolder(ProductViewHolder holder, int position) {
         db = AppDatabase.getAppDatabase(context);
         Product product = listProducts.get(position);
+        Log.d("sel", product.getProductImagePath());
         holder.ivProduct.setImageURI(Uri.parse(product.getProductImagePath()));
         holder.tvProductName.setText(product.getProductName());
         holder.tvProductPrice.setText(new DecimalFormat("#,###.##").format(product.getProductPrice()) + "đ");

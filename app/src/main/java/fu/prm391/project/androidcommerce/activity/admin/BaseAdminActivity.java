@@ -13,10 +13,12 @@ import android.widget.Toast;
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.customer.BaseCustomerActivity;
 import fu.prm391.project.androidcommerce.activity.customer.CheckOutActivity;
+import fu.prm391.project.androidcommerce.activity.login.LoginActivity;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class BaseAdminActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
+    private SharedPreferenceUtil util;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,11 @@ public class BaseAdminActivity extends AppCompatActivity {
                 return true;
             case R.id.nav_order:
                 return true;
+            case R.id.nav_logout:
+                util = new SharedPreferenceUtil();
+                util.destroyPreference(this);
+                startActivity(new Intent(BaseAdminActivity.this, LoginActivity.class));
+
         }
         return super.onOptionsItemSelected(item);
     }
