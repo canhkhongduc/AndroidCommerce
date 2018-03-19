@@ -1,11 +1,9 @@
 package fu.prm391.project.androidcommerce.database;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.support.annotation.NonNull;
 
 import fu.prm391.project.androidcommerce.database.dao.CategoryDAO;
 import fu.prm391.project.androidcommerce.database.dao.OrderDAO;
@@ -62,7 +60,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
             //init functions have empty checks
             initializer.initUserType();
-            initializer.initAdmin();
+            initializer.initUser();
             initializer.initCategory();
             initializer.initProduct();
         }
