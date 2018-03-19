@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity;
+import fu.prm391.project.androidcommerce.activity.customer.CustomerMenuActivity;
 import fu.prm391.project.androidcommerce.controller.LoginController;
 import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
 import fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity;
@@ -83,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
                     SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
                     SharedPreferences.Editor preferenceEditor = preference.edit();
                     preferenceEditor.putInt("userId", user.getUserId()).apply();
-                    Intent intent = new Intent(LoginActivity.this, CustomerHomeActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, CustomerMenuActivity.class);
                     startActivity(intent);
                 }
             }
