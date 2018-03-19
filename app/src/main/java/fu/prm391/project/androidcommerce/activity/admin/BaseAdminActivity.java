@@ -63,8 +63,10 @@ public class BaseAdminActivity extends AppCompatActivity {
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewCategoryActivity.class));
                 return true;
             case R.id.nav_user:
+                startActivity(new Intent(BaseAdminActivity.this, AdminViewUserActivity.class));
                 return true;
             case R.id.nav_order:
+                startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
                 return true;
             case R.id.nav_logout:
                 util = new SharedPreferenceUtil();
