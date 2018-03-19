@@ -6,6 +6,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="cc_tv_text_color">#ffffff</item>
+        <item name="cc_tv_background_drawable">@drawable/cart_counter_number</item>
+        <item name="cc_is_animate_layout">false</item>
     </style>
 
     <style name = "AppThemeNoActionBar" parent = "AppTheme">
