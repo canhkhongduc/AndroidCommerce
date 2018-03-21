@@ -8,8 +8,8 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -39,8 +39,9 @@
         <activity android:name=".activity.admin.AdminAddProductActivity" />
         <activity android:name=".activity.admin.AdminViewCategoryActivity" />
         <activity android:name=".activity.admin.AdminViewUserActivity" />
-        <activity android:name=".activity.admin.BaseAdminActivity"/>
-        <activity android:name=".activity.customer.CustomerMenuActivity"></activity>
+        <activity android:name=".activity.admin.BaseAdminActivity" />
+        <activity android:name=".activity.customer.CustomerMenuActivity" />
+        <activity android:name=".activity.customer.CategoryActivity"></activity>
     </application>
 
 </manifest>

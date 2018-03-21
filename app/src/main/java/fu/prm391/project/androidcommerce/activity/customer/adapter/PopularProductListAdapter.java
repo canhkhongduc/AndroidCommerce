@@ -41,7 +41,6 @@ public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProdu
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("abc", "click");
                     Context context = v.getContext();
 
                     Intent intent = new Intent(context, ProductDetailActivity.class);

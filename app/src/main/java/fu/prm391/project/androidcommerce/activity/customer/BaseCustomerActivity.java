@@ -76,4 +76,8 @@ public class BaseCustomerActivity extends AppCompatActivity {
         }
         return super.onPrepareOptionsMenu(menu);
     }
+
+    protected void addCartCount(int step){
+        CartCounterActionView.setCountStep(this, step);
+    }
 }
