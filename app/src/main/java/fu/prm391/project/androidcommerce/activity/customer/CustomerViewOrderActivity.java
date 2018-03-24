@@ -29,7 +29,6 @@ public class CustomerViewOrderActivity extends BaseCustomerActivity {
         db = AppDatabase.getAppDatabase(this);
         util = new SharedPreferenceUtil();
         int userId =  util.getUser(this);
-        Log.d("avx", userId + "");
         customerViewOrders = findViewById(R.id.customerOrderList);
         customerViewOrders.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);

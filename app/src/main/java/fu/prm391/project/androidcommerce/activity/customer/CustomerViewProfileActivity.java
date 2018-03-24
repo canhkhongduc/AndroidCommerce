@@ -34,7 +34,6 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
         db = AppDatabase.getAppDatabase(this);
         util = new SharedPreferenceUtil();
         int userId = util.getUser(this);
-        Log.d("kahs", userId + "");
         user = db.userDAO().getUserByUserId(userId);
         List<Order> orders = db.orderDAO().getOrdersByUserId(userId);
         tvOrderNumber = findViewById(R.id.tvProfileOrderNumber);

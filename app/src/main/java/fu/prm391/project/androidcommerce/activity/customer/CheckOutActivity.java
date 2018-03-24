@@ -135,6 +135,8 @@ public class CheckOutActivity extends BaseCustomerActivity {
                 for (OrderItem orderItem: orderItems) {
                     orderItem.setOrderId(order1.getOrderId());
                     db.orderItemDAO().insert(orderItem);
+                    Product product = db.productDAO().getProductByProductId(orderItem.getProductId());
+                    db.productDAO().updateProductStock(product.getProductId(), product.getStock() - orderItem.getQuantity());
                 }
                 util.removePreference(CheckOutActivity.this,"cartItem");
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();

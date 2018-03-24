@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fu.prm391.project.androidcommerce.activity.admin.AdminViewUserActivity">
+    tools:context="fu.prm391.project.androidcommerce.activity.admin.AdminViewOrderDetailActivity">
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/adminViewOrderList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/userListView">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" />
 </RelativeLayout>

@@ -55,9 +55,9 @@
         android:id="@+id/ivAddProductImage"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@+id/etAddPrice"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_above="@+id/btnAddProductConfirm"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="15dp"
         app:srcCompat="@drawable/default_product" />
 
     <Button
@@ -69,5 +69,15 @@
         android:background="@color/colorPrimary"
         android:text="@string/add_product"
         android:textColor="@android:color/background_light" />
+
+    <EditText
+        android:id="@+id/etStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etAddPrice"
+        android:ems="10"
+        android:hint="In stock"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

@@ -43,8 +43,6 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_menu);
         util = new SharedPreferenceUtil();
-        int userId = util.getUser(this);
-        Log.d("bchda", ""+ userId);
         db = AppDatabase.getAppDatabase(this);
         productList = db.productDAO().getAll();
 

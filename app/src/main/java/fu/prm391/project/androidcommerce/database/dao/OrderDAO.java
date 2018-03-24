@@ -21,6 +21,9 @@ public interface OrderDAO {
     @Query("SELECT * FROM `Order` WHERE userId = :userId")
     List<Order> getOrdersByUserId(int userId);
 
+    @Query("SELECT * FROM `Order` WHERE isCompleted = :isCompleted")
+    List<Order> getNewOrders(boolean isCompleted);
+
     @Query("SELECT * FROM `Order` WHERE orderId = :orderId")
     Order getOrderByOrderId(int orderId);
 

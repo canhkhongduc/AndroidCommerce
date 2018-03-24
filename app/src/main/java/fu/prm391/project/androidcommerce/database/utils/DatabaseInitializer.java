@@ -34,8 +34,8 @@ public class DatabaseInitializer {
 
     public void initUser() {
         if (db.userDAO().getAll().size() == 0) {
-            User admin = new User("admin", "12345678", "canh.khong@gmail.com", "0985899602", "Hanoi","", 1);
-            User user1 = new User("lam", "1", "abc", "123", "abc","", 2);
+            User admin = new User("admin", "12345678", "canh.khong@gmail.com", "0985899602", "Hanoi", uriUtil.getURLForResource(R.drawable.boss), 1);
+            User user1 = new User("lam", "1", "abc", "123", "abc",uriUtil.getURLForResource(R.drawable.boss), 2);
 
             db.userDAO().insert(admin);
             db.userDAO().insert(user1);
@@ -61,15 +61,15 @@ public class DatabaseInitializer {
     public void initProduct() {
         if (db.productDAO().getAll().size() == 0) {
             Product product1 = new Product("PC Mouse", uriUtil.getURLForResource(R.drawable.g102), 1, 200000,
-                    "Computer mouse", false, 4.5);
+                    "Computer mouse", 100, false, 4.5);
             Product product2 = new Product("Pizza", uriUtil.getURLForResource(R.drawable.pizza), 3, 120000,
-                    "Cheapest pizza in the world!", false, 4.6);
+                    "Cheapest pizza in the world!", 100, false, 4.6);
             Product product3 = new Product("Lamborghini", uriUtil.getURLForResource(R.drawable.lamborghini), 5, 1000000,
-                    "Fastest car in the world!", false, 5);
+                    "Fastest car in the world!", 100,false, 5);
             Product product4 = new Product("Macbook", uriUtil.getURLForResource(R.drawable.macbook), 1, 20000000,
-                    "Better computer, better life", false, 4.3);
+                    "Better computer, better life", 100,false, 4.3);
             Product product5 = new Product("Vans", uriUtil.getURLForResource(R.drawable.shoe), 4, 1300000,
-                    "Vans shoes", false, 4.5);
+                    "Vans shoes", 100,false, 4.5);
 
             db.productDAO().insert(product1);
             db.productDAO().insert(product2);

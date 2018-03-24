@@ -22,15 +22,17 @@ public class Product {
     private int categoryId;
     private float productPrice;
     private String productDescription;
+    private int stock;
     private boolean deleted;
     private double averageRating;
 
-    public Product(String productName, String productImagePath, int categoryId, float productPrice, String productDescription, boolean deleted, double averageRating) {
+    public Product(String productName, String productImagePath, int categoryId, float productPrice, String productDescription, int stock, boolean deleted, double averageRating) {
         this.productName = productName;
         this.productImagePath = productImagePath;
         this.categoryId = categoryId;
         this.productPrice = productPrice;
         this.productDescription = productDescription;
+        this.stock = stock;
         this.deleted = deleted;
         this.averageRating = averageRating;
     }
@@ -85,6 +87,14 @@ public class Product {
 
     public String getProductDescription() {
         return productDescription;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
     public void setProductDescription(String productDescription) {

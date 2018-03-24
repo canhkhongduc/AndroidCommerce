@@ -17,8 +17,8 @@ public class AdminCategoryViewHolder extends RecyclerView.ViewHolder {
     public TextView tvCategoryProductNumber;
     public AdminCategoryViewHolder(View itemView ) {
         super(itemView);
-        ivCategory = itemView.findViewById(R.id.ivAdminCategory);
-        tvCategoryName = itemView.findViewById(R.id.tvAdminCategoryName);
+        ivCategory = itemView.findViewById(R.id.ivUserNumber);
+        tvCategoryName = itemView.findViewById(R.id.tvAdminUserName);
         tvCategoryProductNumber = itemView.findViewById(R.id.tvCategoryProductNumber);
     }
 }

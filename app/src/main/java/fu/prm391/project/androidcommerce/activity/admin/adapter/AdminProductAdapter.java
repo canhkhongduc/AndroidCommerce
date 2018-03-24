@@ -46,6 +46,7 @@ public class AdminProductAdapter extends RecyclerView.Adapter<AdminProductViewHo
         holder.tvAdminViewProductName.setText(product.getProductName());
         holder.tvAdminViewProductPrice.setText("" + product.getProductPrice());
         holder.tvAdminViewProductDescription.setText(product.getProductDescription());
+        holder.tvInStock.setText("In stock: " + product.getStock());
     }
 
     @Override
