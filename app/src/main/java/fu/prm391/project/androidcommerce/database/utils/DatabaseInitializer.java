@@ -34,8 +34,8 @@ public class DatabaseInitializer {
 
     public void initUser() {
         if (db.userDAO().getAll().size() == 0) {
-            User admin = new User("admin", "12345678", "canh.khong@gmail.com", "0985899602", "Hanoi", 1);
-            User user1 = new User("lam", "1", "abc", "123", "abc", 2);
+            User admin = new User("admin", "12345678", "canh.khong@gmail.com", "0985899602", "Hanoi","", 1);
+            User user1 = new User("lam", "1", "abc", "123", "abc","", 2);
 
             db.userDAO().insert(admin);
             db.userDAO().insert(user1);

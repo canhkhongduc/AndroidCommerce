@@ -46,7 +46,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderViewHolder> {
         holder.tvOrderId.setText(""+ order.getOrderId());
         holder.tvProductNumber.setText(""+orderItems.size());
         holder.tvOrderPrice.setText(util.getTotalFromList(context, orderItems) + "00 VND");
-        holder.tvOrderStatus.setText(order.getShipDate()== null ? "Pending" : "Completed");
+        holder.tvOrderStatus.setText(order.isCompleted() ? "Completed" : "Pending");
         holder.tvOrderDate.setText("" + order.getOrderDate());
     }
 

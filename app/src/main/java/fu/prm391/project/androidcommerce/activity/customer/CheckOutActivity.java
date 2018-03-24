@@ -129,16 +129,16 @@ public class CheckOutActivity extends BaseCustomerActivity {
             public void onClick(View view) {
                 Date currentTime = Calendar.getInstance().getTime();
                 Order order = new Order(userId, 1, listUtil.getTotalFromList(CheckOutActivity.this, orderItems),
-                        currentTime, null, null, true);
+                        currentTime, null, null, true, false);
                 db.orderDAO().insert(order);
                 Order order1 = db.orderDAO().getLastInsertedOrder(userId);
                 for (OrderItem orderItem: orderItems) {
                     orderItem.setOrderId(order1.getOrderId());
                     db.orderItemDAO().insert(orderItem);
                 }
-                util.destroyPreference(CheckOutActivity.this);
+                util.removePreference(CheckOutActivity.this,"cartItem");
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(CheckOutActivity.this, CustomerHomeActivity.class));
+                startActivity(new Intent(CheckOutActivity.this, CheckOutSuccessActivity.class));
             }
         });
 

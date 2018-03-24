@@ -42,4 +42,8 @@ public interface UserDAO {
 
     @Query("UPDATE User SET userType= :userType WHERE userId = :userId")
     public abstract int updateUserType(int userId, int userType);
+
+    @Query("UPDATE User SET userImagePath= :userImagePath WHERE userId = :userId")
+    public abstract int updateUserImagePath(int userId, String userImagePath);
+
 }

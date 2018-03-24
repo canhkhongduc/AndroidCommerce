@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterListe
                 Toast.makeText(RegisterActivity.this, "Please fill all the credentials!", Toast.LENGTH_LONG).show();
                 return;
             } else {
-                User user = new User(username, password, email, phone, address, db.userTypeDAO().TYPE_USER);
+                User user = new User(username, password, email, phone, address,null, db.userTypeDAO().TYPE_USER);
 
                 registerController.register(user); //After RegisterAsyncTask finishes, registerDone() will be called
             }

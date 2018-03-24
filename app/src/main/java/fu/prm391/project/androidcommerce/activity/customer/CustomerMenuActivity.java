@@ -18,6 +18,7 @@ import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.customer.adapter.PopularProductListAdapter;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
+import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -33,12 +34,15 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
     private RecyclerView.ItemDecoration itemDecoration;
     private List<Product> productList;
     private AppDatabase db;
+    private SharedPreferenceUtil util;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_menu);
-
+        util = new SharedPreferenceUtil();
+        int userId = util.getUser(this);
+        Log.d("bchda", ""+ userId);
         db = AppDatabase.getAppDatabase(this);
         productList = db.productDAO().getAll();
 

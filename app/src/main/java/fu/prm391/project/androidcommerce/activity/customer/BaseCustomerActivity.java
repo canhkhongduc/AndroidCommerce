@@ -56,6 +56,9 @@ public class BaseCustomerActivity extends AppCompatActivity {
                 util.destroyPreference(this);
                 startActivity(new Intent(BaseCustomerActivity.this, LoginActivity.class));
                 break;
+            case R.id.customer:
+                startActivity(new Intent(BaseCustomerActivity.this, CustomerViewProfileActivity.class));
+                break;
         }
 
         return super.onOptionsItemSelected(item);

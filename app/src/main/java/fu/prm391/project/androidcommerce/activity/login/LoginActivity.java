@@ -6,10 +6,21 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
+
+import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity;
@@ -20,6 +31,7 @@ import fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
 import fu.prm391.project.androidcommerce.database.utils.DatabaseInitializer;
+import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class LoginActivity extends AppCompatActivity implements LoginListener {
     private TextView btnRegister;
@@ -58,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
                 return;
             }
 
-            User user = new User(username, password, null, null, null, -1);
+            User user = new User(username, password, null, null, null,null, -1);
 
             loginController.login(user); //After LoginAsyncTask finishes, login() or loginFailed() will be called
         }
