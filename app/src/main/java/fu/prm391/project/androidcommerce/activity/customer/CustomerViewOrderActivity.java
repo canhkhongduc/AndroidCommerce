@@ -1,7 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +15,7 @@ import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListe
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Order;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
-import fu.prm391.project.androidcommerce.utils.customer.OrderAdapter;
+import fu.prm391.project.androidcommerce.activity.customer.adapter.OrderAdapter;
 
 public class CustomerViewOrderActivity extends BaseCustomerActivity {
     private RecyclerView customerViewOrders;

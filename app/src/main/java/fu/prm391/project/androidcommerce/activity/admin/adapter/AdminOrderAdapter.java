@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils.admin;
+package fu.prm391.project.androidcommerce.activity.admin.adapter;
 
 import android.content.Context;
 import android.net.Uri;

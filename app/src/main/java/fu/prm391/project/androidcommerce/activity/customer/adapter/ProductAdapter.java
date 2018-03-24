@@ -1,10 +1,6 @@
-package fu.prm391.project.androidcommerce.utils.customer;
+package fu.prm391.project.androidcommerce.activity.customer.adapter;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.List;
 

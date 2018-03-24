@@ -6,13 +6,12 @@
     android:layout_height="match_parent"
     tools:context="fu.prm391.project.androidcommerce.activity.admin.AdminViewCategoryActivity">
 
-    <ListView
-        android:id="@+id/listCategories"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/adminCategoryList"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_height="550dp">
 
+    </android.support.v7.widget.RecyclerView>
     <Button
         android:id="@+id/btnAddCategory"
         android:layout_width="match_parent"

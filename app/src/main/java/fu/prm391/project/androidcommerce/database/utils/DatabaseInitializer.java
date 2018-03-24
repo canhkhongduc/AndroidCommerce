@@ -44,11 +44,11 @@ public class DatabaseInitializer {
 
     public void initCategory() {
         if (db.categoryDAO().getAll().size() == 0) {
-            Category cat1 = new Category("Computer", false);
-            Category cat2 = new Category("Phone", false);
-            Category cat3 = new Category("Food", false);
-            Category cat4 = new Category("Shoe", false);
-            Category cat5 = new Category("Car", false);
+            Category cat1 = new Category("Computer", uriUtil.getURLForResource(R.drawable.elec_icon), false);
+            Category cat2 = new Category("Phone", uriUtil.getURLForResource(R.drawable.phone_icon),false);
+            Category cat3 = new Category("Food", uriUtil.getURLForResource(R.drawable.food_icon),false);
+            Category cat4 = new Category("Shoe", uriUtil.getURLForResource(R.drawable.shoe_icon),false);
+            Category cat5 = new Category("Car", uriUtil.getURLForResource(R.drawable.car_icon),false);
 
             db.categoryDAO().insert(cat1);
             db.categoryDAO().insert(cat2);

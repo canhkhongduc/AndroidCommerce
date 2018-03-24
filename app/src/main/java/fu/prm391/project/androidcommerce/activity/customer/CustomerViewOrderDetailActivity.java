@@ -1,7 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,9 +12,8 @@ import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
-import fu.prm391.project.androidcommerce.database.entity.Order;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
-import fu.prm391.project.androidcommerce.utils.admin.AdminOrderAdapter;
+import fu.prm391.project.androidcommerce.activity.admin.adapter.AdminOrderAdapter;
 
 public class CustomerViewOrderDetailActivity extends BaseCustomerActivity {
     private RecyclerView customerViewOrderDetail;
@@ -38,8 +36,9 @@ public class CustomerViewOrderDetailActivity extends BaseCustomerActivity {
         orderItems = db.orderItemDAO().getOrderItemByOrderId(orderId);
         adapter = new AdminOrderAdapter(orderItems,this);
         customerViewOrderDetail.setAdapter(adapter);
-
         btnReceiveProducts = findViewById(R.id.btnReceivedProducts);
+        if (db.orderDAO().getOrderByOrderId(orderId).isCompleted())
+            btnReceiveProducts.setVisibility(View.INVISIBLE);
         btnReceiveProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

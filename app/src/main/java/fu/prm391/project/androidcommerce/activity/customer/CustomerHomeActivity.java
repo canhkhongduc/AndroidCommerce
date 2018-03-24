@@ -7,18 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListener;
-import fu.prm391.project.androidcommerce.database.entity.Category;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
-import fu.prm391.project.androidcommerce.database.entity.User;
-import fu.prm391.project.androidcommerce.utils.URIUtil;
-import fu.prm391.project.androidcommerce.utils.customer.ProductAdapter;
+import fu.prm391.project.androidcommerce.activity.customer.adapter.ProductAdapter;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
