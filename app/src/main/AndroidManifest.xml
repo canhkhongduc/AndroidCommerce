@@ -46,6 +46,7 @@
         <activity android:name=".activity.customer.CheckOutSuccessActivity" />
         <activity android:name=".activity.customer.CustomerViewOrderDetailActivity" />
         <activity android:name=".activity.customer.CustomerReviewActivity"></activity>
+        <activity android:name=".activity.customer.CategoryActivity"></activity>
     </application>
 
 </manifest>

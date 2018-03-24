@@ -1,7 +1,9 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,7 +49,24 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
         productList = db.productDAO().getAll();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_menu_botnav);
-//        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_category:
+                        Intent intent = new Intent(CustomerMenuActivity.this, CategoryActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(0, 0);
+                        break;
+                    case R.id.action_home:
+                        break;
+                }
+
+                return true;
+            }
+        });
 
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(0);

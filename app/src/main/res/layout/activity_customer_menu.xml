@@ -8,8 +8,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginBottom="50dp"
+        android:fillViewport="true"
         app:layout_constraintTop_toTopOf="parent">
 
         <android.support.constraint.ConstraintLayout
@@ -21,7 +22,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 app:fillColor="#ffffff"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,121 +48,111 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/carouselPromo" />
 
-            <LinearLayout
-                android:id="@+id/row1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
+            <FrameLayout
+                android:id="@+id/frame1"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="1dp"
+                android:background="#ffffff"
+                app:layout_constraintEnd_toStartOf="@id/frame2"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt1">
+                app:layout_constraintTop_toBottomOf="@id/txt1">
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="25dp"
+                    android:text="Phone" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|start"
-                        android:layout_marginStart="25dp"
-                        android:text="Phone" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/phone_icon" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center|end"
-                        android:layout_marginEnd="10dp"
-                        app:srcCompat="@drawable/phone_icon" />
+            </FrameLayout>
 
-                </FrameLayout>
+            <FrameLayout
+                android:id="@+id/frame2"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="1dp"
+                android:background="#ffffff"
+                app:layout_constraintLeft_toRightOf="@+id/frame1"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/frame1">
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="1dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="25dp"
+                    android:text="Car" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|start"
-                        android:layout_marginStart="25dp"
-                        android:text="Car" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/car_icon" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center|end"
-                        android:layout_marginEnd="10dp"
-                        app:srcCompat="@drawable/car_icon" />
+            </FrameLayout>
 
-                </FrameLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/row2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
+            <FrameLayout
+                android:id="@+id/frame3"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginEnd="1dp"
+                android:background="#ffffff"
+                app:layout_constraintEnd_toStartOf="@id/frame4"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/row1">
+                app:layout_constraintTop_toBottomOf="@id/frame1">
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="25dp"
+                    android:text="Electronics" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|start"
-                        android:layout_marginStart="25dp"
-                        android:text="Electronics" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/elec_icon" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center|end"
-                        android:layout_marginEnd="10dp"
-                        app:srcCompat="@drawable/elec_icon" />
+            </FrameLayout>
 
-                </FrameLayout>
+            <FrameLayout
+                android:id="@+id/frame4"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="1dp"
+                android:background="#ffffff"
+                app:layout_constraintLeft_toRightOf="@+id/frame3"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/frame3">
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="80dp"
-                    android:layout_marginStart="1dp"
-                    android:layout_weight="1"
-                    android:background="#ffffff">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|start"
+                    android:layout_marginStart="25dp"
+                    android:text="Food" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center|start"
-                        android:layout_marginStart="25dp"
-                        android:text="Food" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/food_icon" />
 
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_gravity="center|end"
-                        android:layout_marginEnd="10dp"
-                        app:srcCompat="@drawable/food_icon" />
-
-                </FrameLayout>
-
-            </LinearLayout>
+            </FrameLayout>
 
             <TextView
                 android:id="@+id/txt2"
@@ -175,7 +165,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/row2" />
+                app:layout_constraintTop_toBottomOf="@+id/frame3" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/popular_product_list"

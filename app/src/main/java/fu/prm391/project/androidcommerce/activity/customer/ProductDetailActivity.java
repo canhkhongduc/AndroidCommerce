@@ -54,6 +54,7 @@ public class ProductDetailActivity extends BaseCustomerActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ProductDetailActivity.this, "Item added to cart", Toast.LENGTH_LONG).show();
+                addCartCount(1);
                 OrderItem orderItem = new OrderItem(-1,product.getProductId(), 1);
                 SharedPreferenceUtil util = new SharedPreferenceUtil();
                 ArrayList<OrderItem> orderItems = util.getCart(ProductDetailActivity.this, "cartItem");;
