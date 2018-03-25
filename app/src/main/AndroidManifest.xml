@@ -30,19 +30,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.admin.AdminHomeActivity" />
+        <activity android:name=".activity.admin.AdminViewOrderActivity" />
         <activity android:name=".activity.customer.CheckOutActivity" />
         <activity android:name=".activity.customer.CustomerHomeActivity" />
         <activity android:name=".activity.customer.ProductDetailActivity" />
-        <activity android:name=".activity.admin.AdminViewOrderActivity" />
+        <activity android:name=".activity.admin.AdminViewOrderDetailActivity" />
         <activity android:name=".activity.admin.AdminViewProductActivity" />
         <activity android:name=".activity.admin.AdminAddProductActivity" />
         <activity android:name=".activity.admin.AdminViewCategoryActivity" />
         <activity android:name=".activity.admin.AdminViewUserActivity" />
         <activity android:name=".activity.admin.BaseAdminActivity" />
         <activity android:name=".activity.customer.CustomerMenuActivity" />
+<<<<<<< HEAD
         <activity android:name=".activity.customer.CategoryActivity" />
         <activity android:name=".activity.customer.ProductListActivity"></activity>
+=======
+        <activity android:name=".activity.customer.CustomerViewProfileActivity" />
+        <activity android:name=".activity.customer.CustomerViewOrderActivity" />
+        <activity android:name=".activity.customer.CheckOutSuccessActivity" />
+        <activity android:name=".activity.customer.CustomerViewOrderDetailActivity" />
+        <activity android:name=".activity.customer.CustomerReviewActivity" />
+        <activity android:name=".activity.customer.CategoryActivity" />
+        <activity android:name=".activity.admin.AdminAddCategoryActivity" />
+        <activity android:name=".activity.admin.AdminHomeActivity" />
+        <activity android:name=".activity.admin.AdminViewOutOfStockProduct"></activity>
+>>>>>>> 0a01d8656e21552af7cdab6625519d5686d14784
     </application>
 
 </manifest>

@@ -17,6 +17,12 @@ public interface ProductDAO {
     @Query("SELECT * FROM Product")
     List<Product> getAll();
 
+    @Query("SELECT * FROM Product WHERE categoryId = :categoryId")
+    List<Product> getProductsByCategoryId(int categoryId);
+
+    @Query("SELECT * FROM Product WHERE stock = 0")
+    List<Product> getOutOfStockProducts();
+
     @Query("SELECT * FROM Product WHERE productId = :productId")
     Product getProductByProductId(int productId);
 
@@ -25,4 +31,7 @@ public interface ProductDAO {
 
     @Insert
     void insert(Product... product);
+
+    @Query("UPDATE Product SET stock= :stock WHERE productId = :productId")
+    public abstract int updateProductStock(int productId, int stock);
 }

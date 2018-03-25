@@ -20,14 +20,19 @@ public class User {
     private String email;
     private String phone;
     private String address;
+    private String userImagePath;
     private int userType;
 
-    public User(String username, String password, String email, String phone, String address, int userType) {
+    public User() {
+    }
+
+    public User(String username, String password, String email, String phone, String address, String userImagePath, int userType) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.address = address;
+        this.userImagePath = userImagePath;
         this.userType = userType;
     }
 
@@ -77,6 +82,14 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getUserImagePath() {
+        return userImagePath;
+    }
+
+    public void setUserImagePath(String userImagePath) {
+        this.userImagePath = userImagePath;
     }
 
     public int getUserType() {

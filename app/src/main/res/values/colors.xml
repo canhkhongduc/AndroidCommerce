@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#0066ff</color>
     <color name="colorAccent">#0099ff</color>
     <color name="colorAddToCart">#22fce702</color>
+    <color name="colorBackground">#f2f2f2</color>
+    <color name="colorDarkBlue">#cceeff</color>
 </resources>

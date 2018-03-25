@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils.admin;
+package fu.prm391.project.androidcommerce.activity.admin.adapter;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -18,6 +18,7 @@ public class AdminProductViewHolder extends RecyclerView.ViewHolder {
     public TextView tvAdminViewProductName;
     public TextView tvAdminViewProductDescription;
     public TextView tvAdminViewProductPrice;
+    public TextView tvInStock;
     public Button btnEditProduct;
     private CustomCardViewListener cListener;
 
@@ -28,6 +29,7 @@ public class AdminProductViewHolder extends RecyclerView.ViewHolder {
         tvAdminViewProductName = itemView.findViewById(R.id.tvAdminProductName);
         tvAdminViewProductPrice = itemView.findViewById(R.id.tvAdminProductPrice);
         tvAdminViewProductDescription = itemView.findViewById(R.id.tvAdminProductDescription);
+        tvInStock = itemView.findViewById(R.id.tvInStock);
         btnEditProduct = itemView.findViewById(R.id.btnEditProduct);
         btnEditProduct.setOnClickListener(new View.OnClickListener() {
             @Override

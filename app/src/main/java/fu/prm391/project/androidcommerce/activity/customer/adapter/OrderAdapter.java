@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils.customer;
+package fu.prm391.project.androidcommerce.activity.customer.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -46,7 +46,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderViewHolder> {
         holder.tvOrderId.setText(""+ order.getOrderId());
         holder.tvProductNumber.setText(""+orderItems.size());
         holder.tvOrderPrice.setText(util.getTotalFromList(context, orderItems) + "00 VND");
-        holder.tvOrderStatus.setText(order.getShipDate()== null ? "Pending" : "Completed");
+        holder.tvOrderStatus.setText(order.isCompleted() ? "Completed" : "Pending");
         holder.tvOrderDate.setText("" + order.getOrderDate());
     }
 

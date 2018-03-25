@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class AdminAddProductActivity extends BaseAdminActivity {
     private EditText etAddProductName, etAddProductDescription, etAddProductPrice;
     private RadioGroup rgAddCategory;
     private ImageView ivAddProductImage;
+    private EditText etInStock;
     private AppDatabase db;
     private final int PICK_IMAGE = 100;
     private Button btnAddProductConfirm;
@@ -35,6 +37,7 @@ public class AdminAddProductActivity extends BaseAdminActivity {
         etAddProductName = findViewById(R.id.etAddProductName);
         etAddProductDescription = findViewById(R.id.etAddProductDescription);
         etAddProductPrice = findViewById(R.id.etAddPrice);
+        etInStock = findViewById(R.id.etStock);
         rgAddCategory = findViewById(R.id.rgCategoryGroup);
         ivAddProductImage = findViewById(R.id.ivAddProductImage);
         btnAddProductConfirm = findViewById(R.id.btnAddProductConfirm);
@@ -63,9 +66,9 @@ public class AdminAddProductActivity extends BaseAdminActivity {
                 String productDescription = etAddProductDescription.getText().toString();
                 String productPrice = etAddProductPrice.getText().toString();
                 int category = rgAddCategory.getCheckedRadioButtonId();
-                Log.d("checked cat", "" + category);
+                int stock = Integer.parseInt(etInStock.getText().toString());
                 Product product = new Product(productName,selectedImage.toString(),category, Integer.parseInt(productPrice),
-                        productDescription, false, 4.5);
+                        productDescription, stock,false, 4.5);
                 db.productDAO().insert(product);
                 startActivity(new Intent(AdminAddProductActivity.this, AdminViewProductActivity.class));
             }
@@ -77,7 +80,6 @@ public class AdminAddProductActivity extends BaseAdminActivity {
         if (requestCode == PICK_IMAGE){
             if(data != null) {
                 selectedImage = data.getData();
-                Log.d("selected", selectedImage.getEncodedPath());
                 ivAddProductImage.setImageURI(selectedImage);
             }
         }

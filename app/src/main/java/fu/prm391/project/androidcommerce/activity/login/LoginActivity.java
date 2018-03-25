@@ -13,13 +13,12 @@ import android.widget.Toast;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity;
+import fu.prm391.project.androidcommerce.activity.admin.AdminViewOrderActivity;
 import fu.prm391.project.androidcommerce.activity.customer.CustomerMenuActivity;
 import fu.prm391.project.androidcommerce.controller.LoginController;
 import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
-import fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.User;
-import fu.prm391.project.androidcommerce.database.utils.DatabaseInitializer;
 
 public class LoginActivity extends AppCompatActivity implements LoginListener {
     private TextView btnRegister;
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
                 return;
             }
 
-            User user = new User(username, password, null, null, null, -1);
+            User user = new User(username, password, null, null, null,null, -1);
 
             loginController.login(user); //After LoginAsyncTask finishes, login() or loginFailed() will be called
         }

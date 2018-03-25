@@ -31,8 +31,9 @@ public class Order {
     @TypeConverters(DateConverter.class)
     private Date paymentDate;
     private boolean checkedOut;
+    private boolean isCompleted;
 
-    public Order(int userId, int paymentTypeId, double paymentAmount, Date orderDate, Date shipDate, Date paymentDate, boolean checkedOut) {
+    public Order(int userId, int paymentTypeId, double paymentAmount, Date orderDate, Date shipDate, Date paymentDate, boolean checkedOut, boolean isCompleted) {
         this.userId = userId;
         this.paymentTypeId = paymentTypeId;
         this.paymentAmount = paymentAmount;
@@ -40,6 +41,7 @@ public class Order {
         this.shipDate = shipDate;
         this.paymentDate = paymentDate;
         this.checkedOut = checkedOut;
+        this.isCompleted = isCompleted;
     }
 
     public int getOrderId() {
@@ -104,5 +106,13 @@ public class Order {
 
     public void setCheckedOut(boolean checkedOut) {
         this.checkedOut = checkedOut;
+    }
+
+    public boolean isCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(boolean completed) {
+        isCompleted = completed;
     }
 }

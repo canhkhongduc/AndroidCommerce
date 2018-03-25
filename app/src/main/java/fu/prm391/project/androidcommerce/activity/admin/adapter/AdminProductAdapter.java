@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils.admin;
+package fu.prm391.project.androidcommerce.activity.admin.adapter;
 
 import android.content.Context;
 import android.net.Uri;
@@ -46,6 +46,7 @@ public class AdminProductAdapter extends RecyclerView.Adapter<AdminProductViewHo
         holder.tvAdminViewProductName.setText(product.getProductName());
         holder.tvAdminViewProductPrice.setText("" + product.getProductPrice());
         holder.tvAdminViewProductDescription.setText(product.getProductDescription());
+        holder.tvInStock.setText("In stock: " + product.getStock());
     }
 
     @Override

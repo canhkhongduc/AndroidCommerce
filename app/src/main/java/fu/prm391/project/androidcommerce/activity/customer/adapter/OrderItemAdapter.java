@@ -1,4 +1,4 @@
-package fu.prm391.project.androidcommerce.utils.customer;
+package fu.prm391.project.androidcommerce.activity.customer.adapter;
 
 import android.content.Context;
 import android.net.Uri;

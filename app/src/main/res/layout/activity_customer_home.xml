@@ -10,42 +10,21 @@
     android:layout_height="match_parent"
     tools:context="fu.prm391.project.androidcommerce.customerActivity.CustomerHomeActivity">
 
+    <TextView
+        android:id="@+id/tvCustomer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cardList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_below="@+id/tvCustomer"
+        android:layout_marginTop="15dp" />
 
-    <TextView
-        android:id="@+id/tvCart"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="20dp"
-        android:layout_toStartOf="@+id/ivCustomer"
-        android:background="@color/colorPrimaryDark"
-        android:text="1"
-        android:textAlignment="center"
-        android:textColor="@android:color/background_light"
-        android:textSize="15dp"
-        android:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/imageCart"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/tvCart"
-        android:background="@color/cardview_light_background"
-        app:srcCompat="@drawable/cart_icon"
-        android:tint="@color/colorAccent"/>
 </RelativeLayout>
-    <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/admin_nav_menu"
-        android:layout_gravity="start">
-
-    </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>

@@ -1,7 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.admin;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +14,7 @@ import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
-import fu.prm391.project.androidcommerce.utils.admin.AdminProductAdapter;
+import fu.prm391.project.androidcommerce.activity.admin.adapter.AdminProductAdapter;
 
 public class AdminViewProductActivity extends BaseAdminActivity {
     private RecyclerView adminViewProductList;

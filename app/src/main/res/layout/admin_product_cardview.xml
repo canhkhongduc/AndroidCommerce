@@ -26,9 +26,9 @@
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/ivAdminProduct"
-            android:layout_marginTop="14dp"
             android:layout_marginStart="5dp"
-            android:textAlignment="textStart"
+            android:layout_marginTop="14dp"
+            android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
 
@@ -38,16 +38,17 @@
             android:layout_height="30dp"
             android:layout_below="@+id/tvAdminProductName"
             android:layout_marginStart="5dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
+
         <TextView
             android:id="@+id/tvAdminProductDescription"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/tvAdminProductPrice"
-            android:layout_marginStart="5dp"
-            android:textAlignment="textStart"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:textSize="16sp" />
 
@@ -55,10 +56,24 @@
             android:id="@+id/btnEditProduct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_below="@+id/tvAdminProductDescription"
+            android:layout_marginTop="51dp"
             android:background="@color/colorAccent"
             android:text="@string/edit"
             android:textColor="@android:color/background_light"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvInStock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvAdminProductDescription"
+            android:layout_below="@+id/tvAdminProductDescription"
+            android:layout_marginTop="13dp"
+            android:text="In stock: 100"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
     </RelativeLayout>
 </android.support.v7.widget.CardView>

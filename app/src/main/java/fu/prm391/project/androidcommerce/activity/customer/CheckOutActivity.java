@@ -28,7 +28,7 @@ import fu.prm391.project.androidcommerce.database.entity.PaymentType;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 import fu.prm391.project.androidcommerce.database.entity.User;
 import fu.prm391.project.androidcommerce.utils.ArrayListUtil;
-import fu.prm391.project.androidcommerce.utils.customer.OrderItemAdapter;
+import fu.prm391.project.androidcommerce.activity.customer.adapter.OrderItemAdapter;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class CheckOutActivity extends BaseCustomerActivity {
@@ -130,16 +130,22 @@ public class CheckOutActivity extends BaseCustomerActivity {
             public void onClick(View view) {
                 Date currentTime = Calendar.getInstance().getTime();
                 Order order = new Order(userId, 1, listUtil.getTotalFromList(CheckOutActivity.this, orderItems),
-                        currentTime, null, null, true);
+                        currentTime, null, null, true, false);
                 db.orderDAO().insert(order);
                 Order order1 = db.orderDAO().getLastInsertedOrder(userId);
                 for (OrderItem orderItem: orderItems) {
                     orderItem.setOrderId(order1.getOrderId());
                     db.orderItemDAO().insert(orderItem);
+                    Product product = db.productDAO().getProductByProductId(orderItem.getProductId());
+                    db.productDAO().updateProductStock(product.getProductId(), product.getStock() - orderItem.getQuantity());
                 }
-                util.destroyPreference(CheckOutActivity.this);
+                util.removePreference(CheckOutActivity.this,"cartItem");
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
+<<<<<<< HEAD
                 finish();
+=======
+                startActivity(new Intent(CheckOutActivity.this, CheckOutSuccessActivity.class));
+>>>>>>> 0a01d8656e21552af7cdab6625519d5686d14784
             }
         });
 

@@ -6,13 +6,11 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.activity.customer.BaseCustomerActivity;
-import fu.prm391.project.androidcommerce.activity.customer.CheckOutActivity;
 import fu.prm391.project.androidcommerce.activity.login.LoginActivity;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
@@ -30,14 +28,20 @@ public class BaseAdminActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_product:
+                        Log.d("navadmin", "" + R.id.nav_admin_home);
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
                         return true;
                     case R.id.nav_category:
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewCategoryActivity.class));
                         return true;
                     case R.id.nav_user:
+                        startActivity(new Intent(BaseAdminActivity.this, AdminViewUserActivity.class));
                         return true;
                     case R.id.nav_order:
+                        startActivity(new Intent(BaseAdminActivity.this, AdminViewOrderActivity.class));
+                        return true;
+                    case R.id.nav_admin_home:
+                        startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
                         return true;
                 }
                 item.setChecked(true);
@@ -66,7 +70,7 @@ public class BaseAdminActivity extends AppCompatActivity {
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewUserActivity.class));
                 return true;
             case R.id.nav_order:
-                startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
+                startActivity(new Intent(BaseAdminActivity.this, AdminViewOrderActivity.class));
                 return true;
             case R.id.nav_logout:
                 util = new SharedPreferenceUtil();

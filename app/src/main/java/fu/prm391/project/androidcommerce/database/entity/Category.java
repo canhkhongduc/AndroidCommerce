@@ -14,10 +14,12 @@ public class Category {
     private int categoryId;
 
     private String categoryName;
+    private String categoryImagePath;
     private boolean deleted;
 
-    public Category(String categoryName, boolean deleted) {
+    public Category(String categoryName, String categoryImagePath, boolean deleted) {
         this.categoryName = categoryName;
+        this.categoryImagePath = categoryImagePath;
         this.deleted = deleted;
     }
 
@@ -43,6 +45,14 @@ public class Category {
 
     public void setDeleted(boolean deleted) {
         this.deleted = deleted;
+    }
+
+    public String getCategoryImagePath() {
+        return categoryImagePath;
+    }
+
+    public void setCategoryImagePath(String categoryImagePath) {
+        this.categoryImagePath = categoryImagePath;
     }
 
     @Override

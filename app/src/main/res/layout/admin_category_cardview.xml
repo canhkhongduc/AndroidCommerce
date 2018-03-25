@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_marginTop="5dp"
+    app:cardBackgroundColor="@color/colorDarkBlue">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivUserNumber"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/food_icon" />
+
+        <TextView
+            android:id="@+id/tvAdminUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="22dp"
+            android:layout_toEndOf="@+id/ivUserNumber"
+            android:text="Car"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCategoryProductNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/tvAdminUserName"
+            android:layout_below="@+id/tvAdminUserName"
+            android:layout_marginTop="15dp"
+            android:text="22 products" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

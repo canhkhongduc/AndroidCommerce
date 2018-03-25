@@ -11,6 +11,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
+import fu.prm391.project.androidcommerce.database.entity.User;
 
 /**
  * Created by Khổng Cảnh on 3/5/2018.
@@ -50,5 +51,10 @@ public class SharedPreferenceUtil {
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
+    }
+    public int getUser(Context context){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        int userId =  preferences.getInt("userId", 0);
+        return userId;
     }
 }
