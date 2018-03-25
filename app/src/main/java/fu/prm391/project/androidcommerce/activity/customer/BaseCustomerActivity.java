@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.rowland.cartcounter.view.CartCounterActionView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.BaseAdminActivity;
@@ -24,6 +25,7 @@ import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class BaseCustomerActivity extends AppCompatActivity {
     private SharedPreferenceUtil util;
+    private CartCounterActionView actionView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,20 +66,36 @@ public class BaseCustomerActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem itemData = menu.findItem(R.id.cart);
-        CartCounterActionView actionView = (CartCounterActionView) itemData.getActionView();
+        actionView = (CartCounterActionView) itemData.getActionView();
         actionView.setItemData(menu, itemData);
 
         SharedPreferenceUtil util = new SharedPreferenceUtil();
         ArrayList<OrderItem> orderItems = util.getCart(BaseCustomerActivity.this, "cartItem");
-        if (orderItems != null){
-            actionView.setCount(orderItems.size());
+        if (orderItems != null) {
+            actionView.setCount(calculateCartSize(orderItems));
         } else {
             actionView.setCount(0);
         }
         return super.onPrepareOptionsMenu(menu);
     }
 
-    protected void addCartCount(int step){
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        invalidateOptionsMenu();
+    }
+
+    protected void addCartCount(int step) {
         CartCounterActionView.setCountStep(this, step);
+    }
+
+    private int calculateCartSize(List<OrderItem> orderItemList) {
+        int size = 0;
+        for (OrderItem orderItem : orderItemList) {
+            size += orderItem.getQuantity();
+        }
+
+        return size;
     }
 }
