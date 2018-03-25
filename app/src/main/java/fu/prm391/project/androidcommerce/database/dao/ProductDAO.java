@@ -20,6 +20,9 @@ public interface ProductDAO {
     @Query("SELECT * FROM Product WHERE productId = :productId")
     Product getProductByProductId(int productId);
 
+    @Query("SELECT * FROM Product WHERE categoryId = :categoryId")
+    List<Product> getProductsByCategory(int categoryId);
+
     @Insert
     void insert(Product... product);
 }
