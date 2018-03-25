@@ -3,13 +3,17 @@ package fu.prm391.project.androidcommerce.activity.customer;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
@@ -20,61 +24,67 @@ import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class ProductDetailActivity extends BaseCustomerActivity {
     private AppDatabase db;
-    private ImageView ivProduct;
-    private TextView tvProductName;
-    private TextView tvProductPrice;
-    private TextView tvCategoryName;
-    private TextView tvProductDescription;
-    private TextView tvProductRating;
+    private ImageView imgProduct;
+    private TextView txtProductName;
+    private TextView txtProductPrice;
+    private RatingBar txtProductRating;
     private Button btnAddToCart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
-        ivProduct = (ImageView) findViewById(R.id.ivProductDetail);
-        tvProductName = (TextView) findViewById(R.id.tvProductNameDetail);
-        tvCategoryName = (TextView) findViewById(R.id.tvCategoryDetail);
-        tvProductPrice = (TextView) findViewById(R.id.tvProductPriceDetail);
-        tvProductDescription = (TextView) findViewById(R.id.tvProductDescription);
-        tvProductRating = (TextView) findViewById(R.id.tvRating);
+
+        imgProduct = findViewById(R.id.productDetailActivity_imgProduct);
+        txtProductName = findViewById(R.id.productDetailActivity_txtProductName);
+        txtProductPrice = findViewById(R.id.productDetailActivity_txtProductPrice);
+        txtProductRating = findViewById(R.id.productDetailActivity_ratingBarProduct);
+        btnAddToCart = findViewById(R.id.btnAddToCart);
+
         Intent intent = getIntent();
-        final int productId = intent.getIntExtra("productId",0);
+        final int productId = intent.getIntExtra("productId", 0);
         db = AppDatabase.getAppDatabase(this);
         final Product product = db.productDAO().getProductByProductId(productId);
         Category category = db.categoryDAO().getCategoryByCategoryId(product.getCategoryId());
-        ivProduct.setImageURI(Uri.parse(product.getProductImagePath()));
-        tvProductName.setText(product.getProductName());
-        tvProductPrice.setText("" + product.getProductPrice() + "00 VND");
-        tvCategoryName.setText(category.getCategoryName());
-        tvProductRating.setText("" + product.getAverageRating());
-        tvProductDescription.setText(product.getProductDescription());
+        imgProduct.setImageURI(Uri.parse(product.getProductImagePath()));
+        txtProductName.setText(product.getProductName());
+        txtProductPrice.setText(new DecimalFormat("#,###.##").format(product.getProductPrice()) + "đ");
+        txtProductRating.setRating((float) product.getAverageRating());
 
-        btnAddToCart = findViewById(R.id.btnAddToCart);
+
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ProductDetailActivity.this, "Item added to cart", Toast.LENGTH_LONG).show();
-                addCartCount(1);
-                OrderItem orderItem = new OrderItem(-1,product.getProductId(), 1);
+
+                invalidateOptionsMenu();
+                OrderItem orderItem = new OrderItem(-1, product.getProductId(), 1);
+
                 SharedPreferenceUtil util = new SharedPreferenceUtil();
-                ArrayList<OrderItem> orderItems = util.getCart(ProductDetailActivity.this, "cartItem");;
+                ArrayList<OrderItem> orderItems = util.getCart(ProductDetailActivity.this, "cartItem");
+
                 if (orderItems == null) {
                     orderItems = new ArrayList<>();
                     orderItems.add(orderItem);
-                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
-                } else if(orderItems.contains(orderItem)){
-                    orderItems.remove(orderItem);
-                    orderItem.setQuantity(orderItem.getQuantity() + 1);
-                    orderItems.add(orderItem);
-                    util.removePreference(ProductDetailActivity.this, "cartItem");
-                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
                 } else {
-                    orderItems.add(orderItem);
-                    util.removePreference(ProductDetailActivity.this, "cartItem");
-                    util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
+                    if (orderItems.contains(orderItem)) {
+                        orderItem = getOrderItemFromList(orderItems, product.getProductId());
+                        orderItem.setQuantity(orderItem.getQuantity() + 1);
+                    } else {
+                        orderItems.add(orderItem);
+                    }
                 }
+                util.addToCart(ProductDetailActivity.this, orderItems, "cartItem");
             }
         });
     }
 
+    private OrderItem getOrderItemFromList(List<OrderItem> orderItemList, int productId) {
+        for (OrderItem orderItem : orderItemList) {
+            if (orderItem.getProductId() == productId) {
+                return orderItem;
+            }
+        }
+        return null;
+    }
 }

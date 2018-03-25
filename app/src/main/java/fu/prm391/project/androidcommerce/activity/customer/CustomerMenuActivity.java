@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import fu.prm391.project.androidcommerce.R;
+import fu.prm391.project.androidcommerce.activity.customer.adapter.ItemDecoration.HorizontalSpacesItemDecoration;
 import fu.prm391.project.androidcommerce.activity.customer.adapter.PopularProductListAdapter;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
@@ -35,6 +36,7 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
     private RecyclerView.ItemDecoration itemDecoration;
     private List<Product> productList;
     private AppDatabase db;
+    private LinearLayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,7 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
         PopularProductListAdapter listAdapter = new PopularProductListAdapter(productList);
         recyclerView.setAdapter(listAdapter);
 
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
 
         dividerItemDecoration = new DividerItemDecoration(
@@ -88,7 +90,7 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
 
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(30));
+        recyclerView.addItemDecoration(new HorizontalSpacesItemDecoration(30, false));
     }
 
     private ImageListener imageListener = new ImageListener() {
@@ -97,19 +99,4 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
             imageView.setImageResource(promoImages[position]);
         }
     };
-
-    private class SpacesItemDecoration extends RecyclerView.ItemDecoration {
-        private int space;
-
-        public SpacesItemDecoration(int space) {
-            this.space = space;
-        }
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            if (parent.getChildAdapterPosition(view) != 0) {
-                outRect.left = space;
-            }
-        }
-    }
 }
