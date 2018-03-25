@@ -19,9 +19,9 @@
         <item name = "android:windowActionBar">false</item>
         <item name = "android:windowNoTitle">true</item>
     </style>
-    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
-        <item name="spinBars">false</item>
-        <item name="color">@android:color/white</item>
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#f57224</item>
+        <item name="colorControlActivated">#f57224</item>
     </style>
 
 </resources>
