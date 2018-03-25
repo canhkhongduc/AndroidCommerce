@@ -141,11 +141,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
                 }
                 util.removePreference(CheckOutActivity.this,"cartItem");
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
-<<<<<<< HEAD
-                finish();
-=======
                 startActivity(new Intent(CheckOutActivity.this, CheckOutSuccessActivity.class));
->>>>>>> 0a01d8656e21552af7cdab6625519d5686d14784
             }
         });
 

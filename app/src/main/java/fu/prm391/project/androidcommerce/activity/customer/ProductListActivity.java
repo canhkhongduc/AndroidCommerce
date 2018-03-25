@@ -1,7 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,9 +9,9 @@ import android.widget.TextView;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.activity.customer.adapter.ProductAdapter;
 import fu.prm391.project.androidcommerce.activity.customer.adapter.ItemDecoration.HorizontalSpacesItemDecoration;
 import fu.prm391.project.androidcommerce.activity.customer.adapter.ItemDecoration.VerticalSpacesItemDecoration;
+import fu.prm391.project.androidcommerce.activity.customer.adapter.ProductListAdapter;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 
@@ -42,9 +41,9 @@ public class ProductListActivity extends BaseCustomerActivity {
         db = AppDatabase.getAppDatabase(this);
         productList = db.productDAO().getProductsByCategory(categoryId);
 
-        ProductAdapter productAdapter = new ProductAdapter(productList);
+        ProductListAdapter productListAdapter = new ProductListAdapter(productList);
 
-        recyclerView.setAdapter(productAdapter);
+        recyclerView.setAdapter(productListAdapter);
 
         layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);

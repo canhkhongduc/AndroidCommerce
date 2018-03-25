@@ -6,12 +6,12 @@
     android:background="#ffffff">
 
     <ImageView
-        android:id="@+id/productAdapter_imgProduct"
+        android:id="@+id/productListAdapter_imgProduct"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
     <TextView
-        android:id="@+id/productAdapter_txtProductName"
+        android:id="@+id/productListAdapter_txtProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -20,10 +20,10 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productAdapter_imgProduct" />
+        app:layout_constraintTop_toBottomOf="@id/productListAdapter_imgProduct" />
 
     <TextView
-        android:id="@+id/productAdapter_txtProductPrice"
+        android:id="@+id/productListAdapter_txtProductPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -33,10 +33,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productAdapter_txtProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/productListAdapter_txtProductName" />
 
     <RatingBar
-        android:id="@+id/productAdapter_ratingBarProduct"
+        android:id="@+id/productListAdapter_ratingBarProduct"
         style="?android:attr/ratingBarStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +49,6 @@
         android:stepSize="1"
         android:theme="@style/RatingBar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productAdapter_txtProductPrice" />
+        app:layout_constraintTop_toBottomOf="@+id/productListAdapter_txtProductPrice" />
 
 </android.support.constraint.ConstraintLayout>

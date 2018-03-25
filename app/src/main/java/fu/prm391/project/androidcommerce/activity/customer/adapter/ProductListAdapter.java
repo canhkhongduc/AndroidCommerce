@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -21,20 +22,22 @@ import fu.prm391.project.androidcommerce.database.entity.Product;
  * Created by Lam on 3/17/2018.
  */
 
-public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProductListAdapter.ViewHolder> {
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ViewHolder> {
     private static List<Product> productList;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtProductName;
         public TextView txtProductPrice;
         public ImageView imgProduct;
+        public RatingBar ratingBar;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            txtProductName = itemView.findViewById(R.id.txtProductName);
-            txtProductPrice = itemView.findViewById(R.id.txtProductPrice);
-            imgProduct = itemView.findViewById(R.id.imgProduct);
+            txtProductName = itemView.findViewById(R.id.productListAdapter_txtProductName);
+            txtProductPrice = itemView.findViewById(R.id.productListAdapter_txtProductPrice);
+            imgProduct = itemView.findViewById(R.id.productListAdapter_imgProduct);
+            ratingBar = itemView.findViewById(R.id.productListAdapter_ratingBarProduct);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -51,14 +54,14 @@ public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProdu
         }
     }
 
-    public PopularProductListAdapter(List<Product> productList) {
+    public ProductListAdapter(List<Product> productList) {
         this.productList = productList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.adapter_popular_products, parent, false);
+                .inflate(R.layout.adapter_product_list, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -68,6 +71,7 @@ public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProdu
         holder.txtProductName.setText(productList.get(position).getProductName());
         holder.txtProductPrice.setText(new DecimalFormat("#,###.##").format(productList.get(position).getProductPrice()) + "đ");
         holder.imgProduct.setImageURI(Uri.parse(productList.get(position).getProductImagePath()));
+        holder.ratingBar.setRating((float)(productList.get(position).getAverageRating()));
     }
 
     @Override

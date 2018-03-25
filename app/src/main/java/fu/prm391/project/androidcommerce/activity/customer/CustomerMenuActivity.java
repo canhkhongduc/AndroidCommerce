@@ -37,17 +37,12 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
     private RecyclerView.ItemDecoration itemDecoration;
     private List<Product> productList;
     private AppDatabase db;
-<<<<<<< HEAD
     private LinearLayoutManager layoutManager;
-=======
-    private SharedPreferenceUtil util;
->>>>>>> 0a01d8656e21552af7cdab6625519d5686d14784
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_menu);
-        util = new SharedPreferenceUtil();
         db = AppDatabase.getAppDatabase(this);
         productList = db.productDAO().getAll();
 
