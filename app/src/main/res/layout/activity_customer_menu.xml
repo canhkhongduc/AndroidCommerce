@@ -118,7 +118,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|start"
                     android:layout_marginStart="25dp"
-                    android:text="Electronics" />
+                    android:text="Computer" />
 
                 <ImageView
                     android:layout_width="50dp"

@@ -28,6 +28,7 @@ public class CategoryActivity extends BaseCustomerActivity {
     private DividerItemDecoration dividerItemDecoration;
     private CategoryAdapter adapter;
     private LinearLayoutManager layoutManager;
+    private BottomNavigationView navigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,7 @@ public class CategoryActivity extends BaseCustomerActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.addItemDecoration(dividerItemDecoration);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.cus_category_botnav);
+        navigation = findViewById(R.id.cus_category_botnav);
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -68,11 +69,10 @@ public class CategoryActivity extends BaseCustomerActivity {
                     case R.id.action_category:
                         break;
                     case R.id.action_home:
-                        Intent intent = new Intent(CategoryActivity.this, CustomerMenuActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                        startActivity(intent);
-                        finish();
-                        overridePendingTransition(0, 0);
+                        changeActivityBottomNav(CategoryActivity.this, CustomerMenuActivity.class);
+                        break;
+                    case R.id.action_profile:
+                        changeActivityBottomNav(CategoryActivity.this, ProfileActivity.class);
                         break;
                 }
 
@@ -80,7 +80,6 @@ public class CategoryActivity extends BaseCustomerActivity {
             }
         });
 
-        // Ensure correct menu item is selected (where the magic happens)
         Menu menu = navigation.getMenu();
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);

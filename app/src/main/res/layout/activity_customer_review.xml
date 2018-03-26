@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fu.prm391.project.androidcommerce.activity.customer.CustomerReviewActivity">
-    <android.support.v4.view.ViewPager
-        android:id="@+id/reviewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </android.support.v4.view.ViewPager>
-</RelativeLayout>
+    <TextView
+        android:id="@+id/activityReview_txtProductName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Product: XXX"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/activityReview_edtGiveReview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:maxLength="2000"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityReview_txtProductName" />
+
+    <RatingBar
+        android:id="@+id/activityReview_ratingBar"
+        style="?android:attr/ratingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:theme="@style/RatingBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activityReview_edtGiveReview" />
+
+    <Button
+        android:id="@+id/activityReview_btnGiveReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:text="Give review"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activityReview_edtGiveReview" />
+</android.support.constraint.ConstraintLayout>

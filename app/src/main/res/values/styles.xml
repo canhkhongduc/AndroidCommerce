@@ -20,8 +20,8 @@
         <item name = "android:windowNoTitle">true</item>
     </style>
     <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlNormal">#f57224</item>
-        <item name="colorControlActivated">#f57224</item>
+        <item name="colorControlNormal">#faca51</item>
+        <item name="colorControlActivated">#faca51</item>
     </style>
 
 </resources>

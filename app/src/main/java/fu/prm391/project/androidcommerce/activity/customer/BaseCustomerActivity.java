@@ -1,5 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
@@ -17,6 +18,7 @@ import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.BaseAdminActivity;
 import fu.prm391.project.androidcommerce.activity.login.LoginActivity;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
+import fu.prm391.project.androidcommerce.database.entity.Review;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 /**
@@ -52,14 +54,6 @@ public class BaseCustomerActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(this, "Cart empty!", Toast.LENGTH_LONG).show();
                 }
-                break;
-            case R.id.logout:
-                util = new SharedPreferenceUtil();
-                util.destroyPreference(this);
-                startActivity(new Intent(BaseCustomerActivity.this, LoginActivity.class));
-                break;
-            case R.id.customer:
-                startActivity(new Intent(BaseCustomerActivity.this, CustomerViewProfileActivity.class));
                 break;
         }
 
@@ -100,5 +94,23 @@ public class BaseCustomerActivity extends AppCompatActivity {
         }
 
         return size;
+    }
+
+    protected void changeActivityBottomNav(Context context, Class destinationClass){
+        Intent intent = new Intent(context, destinationClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
+        finish();
+        overridePendingTransition(0, 0);
+    }
+
+    protected float calculateAveragePoint(List<Review> reviewList) {
+        float point = 0;
+
+        for (Review review : reviewList) {
+            point += review.getRating();
+        }
+
+        return reviewList.size() != 0 ? point / reviewList.size() : 0;
     }
 }

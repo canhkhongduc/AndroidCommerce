@@ -14,6 +14,7 @@ import fu.prm391.project.androidcommerce.activity.customer.adapter.ItemDecoratio
 import fu.prm391.project.androidcommerce.activity.customer.adapter.ProductListAdapter;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Product;
+import fu.prm391.project.androidcommerce.database.entity.Review;
 
 public class ProductListActivity extends BaseCustomerActivity {
 
@@ -40,6 +41,12 @@ public class ProductListActivity extends BaseCustomerActivity {
 
         db = AppDatabase.getAppDatabase(this);
         productList = db.productDAO().getProductsByCategory(categoryId);
+
+        for(Product product : productList){
+            List<Review> reviewList = db.reviewDAO().getAllReviewByProductId(product.getProductId());
+
+            product.setAverageRating(calculateAveragePoint(reviewList));
+        }
 
         ProductListAdapter productListAdapter = new ProductListAdapter(productList);
 
