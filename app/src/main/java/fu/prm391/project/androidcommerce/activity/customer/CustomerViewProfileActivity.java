@@ -1,5 +1,6 @@
 package fu.prm391.project.androidcommerce.activity.customer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -27,15 +29,17 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
     private final int PICK_IMAGE = 200;
     private Uri selectedImage;
     User user;
+    private Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view_profile);
+        context = this;
         db = AppDatabase.getAppDatabase(this);
         util = new SharedPreferenceUtil();
         int userId = util.getUser(this);
         user = db.userDAO().getUserByUserId(userId);
-        List<Order> orders = db.orderDAO().getOrdersByUserId(userId);
+        final List<Order> orders = db.orderDAO().getOrdersByUserId(userId);
         tvOrderNumber = findViewById(R.id.tvProfileOrderNumber);
         tvOrderNumber.setText("" + orders.size());
         ivProfileAvatar = findViewById(R.id.ivCustomerAvatar);
@@ -71,7 +75,11 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
         tvOrderNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CustomerViewProfileActivity.this, CustomerViewOrderActivity.class));
+                if (orders.size() == 0){
+                    Toast.makeText(context, "You have no orders yet!", Toast.LENGTH_LONG).show();
+                } else {
+                    startActivity(new Intent(CustomerViewProfileActivity.this, CustomerViewOrderActivity.class));
+                }
             }
         });
     }

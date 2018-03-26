@@ -37,7 +37,7 @@ public class AdminViewUserActivity extends BaseAdminActivity {
         userListView = findViewById(R.id.userListView);
         userListView.setHasFixedSize(true);
         db = AppDatabase.getAppDatabase(this);
-        users = db.userDAO().getAll();
+        users = db.userDAO().getCustomers();
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayout.VERTICAL);
         userListView.setLayoutManager(llm);

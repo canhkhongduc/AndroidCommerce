@@ -33,14 +33,20 @@ public class AdminViewProductActivity extends BaseAdminActivity {
                 startActivity(new Intent(AdminViewProductActivity.this, AdminAddProductActivity.class));
             }
         });
-
+        db = AppDatabase.getAppDatabase(this);
+        Intent intent = getIntent();
+        final int categoryId = intent.getIntExtra("catId",0);
+        if (categoryId != 0){
+            products = db.productDAO().getProductsByCategoryId(categoryId);
+        } else {
+            products = db.productDAO().getAll();
+        }
         adminViewProductList = findViewById(R.id.adminViewProductList);
         adminViewProductList.setHasFixedSize(true);
-        db = AppDatabase.getAppDatabase(this);
+
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayout.VERTICAL);
         adminViewProductList.setLayoutManager(llm);
-        products = db.productDAO().getAll();
         CustomCardViewListener listener = new CustomCardViewListener() {
             @Override
             public void onItemClick(View view, int position) {
