@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.activity.customer.adapter.ProductViewHolder;
-import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Category;
 import fu.prm391.project.androidcommerce.database.entity.OrderItem;
@@ -27,24 +25,15 @@ public class AdminCategoryAdapter extends RecyclerView.Adapter<AdminCategoryView
     private List<Product> products;
     private AppDatabase db;
     private Context context;
-    private CustomCardViewListener listener;
 
-    public AdminCategoryAdapter(List<Category> categories, Context context, CustomCardViewListener listener) {
+    public AdminCategoryAdapter(List<Category> categories, Context context) {
         this.categories = categories;
         this.context = context;
-        this.listener = listener;
     }
     @Override
     public AdminCategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_category_cardview, parent,false);
-        final AdminCategoryViewHolder acvh = new AdminCategoryViewHolder(itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                listener.onItemClick(view,acvh.getLayoutPosition());
-            }
-        });
-        return acvh;
+        return new AdminCategoryViewHolder(itemView);
     }
 
     @Override

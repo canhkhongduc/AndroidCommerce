@@ -12,18 +12,15 @@ import android.view.MenuItem;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.login.LoginActivity;
-import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.utils.SharedPreferenceUtil;
 
 public class BaseAdminActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private SharedPreferenceUtil util;
-    private AppDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base_admin);
-        db = AppDatabase.getAppDatabase(this);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -31,6 +28,7 @@ public class BaseAdminActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_product:
+                        Log.d("navadmin", "" + R.id.nav_admin_home);
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
                         return true;
                     case R.id.nav_category:
@@ -62,9 +60,6 @@ public class BaseAdminActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_admin_home:
-                startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
-                return true;
             case R.id.nav_product:
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
                 return true;

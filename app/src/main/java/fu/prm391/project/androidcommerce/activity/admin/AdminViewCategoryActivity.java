@@ -19,7 +19,6 @@ import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.activity.admin.adapter.AdminCategoryAdapter;
-import fu.prm391.project.androidcommerce.controller.listener.CustomCardViewListener;
 import fu.prm391.project.androidcommerce.database.AppDatabase;
 import fu.prm391.project.androidcommerce.database.entity.Category;
 
@@ -41,21 +40,11 @@ public class AdminViewCategoryActivity extends BaseAdminActivity {
         categoryList.setHasFixedSize(true);
         btnAddCategory = findViewById(R.id.btnAddCategory);
         categories = db.categoryDAO().getAll();
-        CustomCardViewListener listener = new CustomCardViewListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                Category category = categories.get(position);
-                Intent intent = new Intent(AdminViewCategoryActivity.this, AdminViewProductActivity.class);
-                intent.putExtra("catId", category.getCategoryId());
-                startActivity(intent);
-            }
-        };
-        adapter = new AdminCategoryAdapter(categories, context, listener);
+        adapter = new AdminCategoryAdapter(categories, context);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayout.VERTICAL);
         categoryList.setLayoutManager(llm);
         categoryList.setAdapter(adapter);
-
         btnAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

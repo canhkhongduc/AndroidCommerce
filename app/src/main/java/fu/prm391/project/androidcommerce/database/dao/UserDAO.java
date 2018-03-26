@@ -19,10 +19,6 @@ public interface UserDAO {
     @Query("SELECT * FROM User")
     List<User> getAll();
 
-    @Query("SELECT * FROM User WHERE userType = 2")
-    List<User> getCustomers();
-
-
     @Query("SELECT * FROM User WHERE username = :username")
     User getUserByUsername(String username);
 
