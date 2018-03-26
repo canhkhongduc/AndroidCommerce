@@ -3,6 +3,7 @@ package fu.prm391.project.androidcommerce.database.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 import android.net.Uri;
 
@@ -12,7 +13,8 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = CASCADE, onUpdate = CASCADE))
+@Entity(indices = {@Index(value = "categoryId")},
+        foreignKeys = @ForeignKey(entity = Category.class, parentColumns = "categoryId", childColumns = "categoryId", onDelete = CASCADE, onUpdate = CASCADE))
 public class Product {
     @PrimaryKey(autoGenerate = true)
     private int productId;

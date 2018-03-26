@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -70,7 +71,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
         orderItems = util.getCart(this,"cartItem");
         final ArrayListUtil listUtil = new ArrayListUtil();
         double total = listUtil.getTotalFromList(this, orderItems);
-        totalPrice.setText(total + "00 VND");
+        totalPrice.setText(new DecimalFormat("#,###.##").format(total) + "đ");
 
         SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(this);
         final int userId = preference.getInt("userId", -1);

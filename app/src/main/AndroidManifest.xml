@@ -15,7 +15,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -41,15 +41,17 @@
         <activity android:name=".activity.admin.AdminViewUserActivity" />
         <activity android:name=".activity.admin.BaseAdminActivity" />
         <activity android:name=".activity.customer.CustomerMenuActivity" />
+        <activity android:name=".activity.customer.CategoryActivity" />
+        <activity android:name=".activity.customer.ProductListActivity" />
         <activity android:name=".activity.customer.CustomerViewProfileActivity" />
         <activity android:name=".activity.customer.CustomerViewOrderActivity" />
         <activity android:name=".activity.customer.CheckOutSuccessActivity" />
         <activity android:name=".activity.customer.CustomerViewOrderDetailActivity" />
         <activity android:name=".activity.customer.CustomerReviewActivity" />
-        <activity android:name=".activity.customer.CategoryActivity" />
         <activity android:name=".activity.admin.AdminAddCategoryActivity" />
         <activity android:name=".activity.admin.AdminHomeActivity" />
-        <activity android:name=".activity.admin.AdminViewOutOfStockProduct"></activity>
+        <activity android:name=".activity.admin.AdminViewOutOfStockProduct" />
+        <activity android:name=".activity.customer.ProfileActivity"></activity>
     </application>
 
 </manifest>

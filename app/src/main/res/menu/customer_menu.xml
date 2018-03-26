@@ -1,20 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/customer"
-        android:icon="@drawable/user"
-        android:orderInCategory="102"
-        android:title="Profile"
-        app:showAsAction="always" />
     <item android:id="@+id/cart"
         android:title=""
         android:icon="@drawable/ic_shopping_cart"
         app:actionLayout="@layout/menu_cartcount"
         android:orderInCategory="101"
-        app:showAsAction="always" />
-    <item android:id="@+id/logout"
-        android:title=""
-        android:icon="@drawable/logout"
-        android:orderInCategory="200"
         app:showAsAction="always" />
 </menu>

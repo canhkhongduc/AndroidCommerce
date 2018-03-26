@@ -27,7 +27,8 @@ import fu.prm391.project.androidcommerce.database.utils.DatabaseInitializer;
  * Created by Lam on 2/28/2018.
  */
 
-@Database(entities = {User.class, UserType.class, Review.class, Product.class, PaymentType.class, OrderItem.class, Order.class, Category.class}, version = 1)
+@Database(entities = {User.class, UserType.class, Review.class, Product.class, PaymentType.class, OrderItem.class, Order.class, Category.class},
+        version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase INSTANCE;

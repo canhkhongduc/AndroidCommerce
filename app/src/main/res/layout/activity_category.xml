@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context="fu.prm391.project.androidcommerce.activity.customer.CategoryActivity">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </android.support.v7.widget.RecyclerView>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/cus_category_botnav"
         android:layout_width="match_parent"

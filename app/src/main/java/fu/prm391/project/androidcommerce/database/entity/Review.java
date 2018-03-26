@@ -3,6 +3,8 @@ package fu.prm391.project.androidcommerce.database.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
 
 import static android.arch.persistence.room.ForeignKey.CASCADE;
@@ -11,17 +13,30 @@ import static android.arch.persistence.room.ForeignKey.CASCADE;
  * Created by Lam on 2/28/2018.
  */
 
-@Entity(foreignKeys = {@ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "userId", onDelete = CASCADE, onUpdate = CASCADE),
-        @ForeignKey(entity = Product.class, parentColumns = "productId", childColumns = "productId", onDelete = CASCADE, onUpdate = CASCADE)})
+@Entity(indices = {@Index(value = {"userId", "productId"})},
+        foreignKeys = {@ForeignKey(entity = User.class, parentColumns = "userId", childColumns = "userId", onDelete = CASCADE, onUpdate = CASCADE),
+                @ForeignKey(entity = Product.class, parentColumns = "productId", childColumns = "productId", onDelete = CASCADE, onUpdate = CASCADE)})
 public class Review {
     @PrimaryKey(autoGenerate = true)
     private int reviewId;
 
     private int userId;
     private int productId;
-    private int rating;
+    private float rating;
     private String description;
     private boolean deleted;
+
+    public Review() {
+    }
+
+    @Ignore
+    public Review(int userId, int productId, float rating, String description, boolean deleted) {
+        this.userId = userId;
+        this.productId = productId;
+        this.rating = rating;
+        this.description = description;
+        this.deleted = deleted;
+    }
 
     public int getReviewId() {
         return reviewId;
@@ -47,11 +62,11 @@ public class Review {
         this.productId = productId;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

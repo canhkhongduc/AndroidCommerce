@@ -70,12 +70,21 @@ public class DatabaseInitializer {
                     "Better computer, better life", 100,false, 4.3);
             Product product5 = new Product("Vans", uriUtil.getURLForResource(R.drawable.shoe), 4, 1300000,
                     "Vans shoes", 100,false, 4.5);
+            Product product6 = new Product("Samsung s8", uriUtil.getURLForResource(R.drawable.sss8), 2, 8000000,
+                    "Samsung Galaxy s8", 2, false, 1);
+            Product product7 = new Product("Samsung s9", uriUtil.getURLForResource(R.drawable.sss9), 2, 8000000,
+                    "Samsung Galaxy s8", 2, false, 1);
+            Product product8 = new Product("Xiaomi Mi Max 2", uriUtil.getURLForResource(R.drawable.mimax2), 2, 8000000,
+                    "Xiaomi Mi Max 2", 2, false, 1);
 
             db.productDAO().insert(product1);
             db.productDAO().insert(product2);
             db.productDAO().insert(product3);
             db.productDAO().insert(product4);
             db.productDAO().insert(product5);
+            db.productDAO().insert(product6);
+            db.productDAO().insert(product7);
+            db.productDAO().insert(product8);
         }
     }
 }

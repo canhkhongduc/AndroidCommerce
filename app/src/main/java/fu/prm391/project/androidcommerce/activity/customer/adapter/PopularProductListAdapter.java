@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.activity.customer.CustomerHomeActivity;
 import fu.prm391.project.androidcommerce.activity.customer.ProductDetailActivity;
 import fu.prm391.project.androidcommerce.database.entity.Product;
 
@@ -60,7 +58,7 @@ public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProdu
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.popular_products_adapter, parent, false);
+                .inflate(R.layout.adapter_popular_products, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -70,8 +68,6 @@ public class PopularProductListAdapter extends RecyclerView.Adapter<PopularProdu
         holder.txtProductName.setText(productList.get(position).getProductName());
         holder.txtProductPrice.setText(new DecimalFormat("#,###.##").format(productList.get(position).getProductPrice()) + "đ");
         holder.imgProduct.setImageURI(Uri.parse(productList.get(position).getProductImagePath()));
-
-        Log.d("test", productList.get(position).getProductImagePath());
     }
 
     @Override
