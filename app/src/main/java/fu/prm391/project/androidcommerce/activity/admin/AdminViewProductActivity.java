@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -37,10 +38,20 @@ public class AdminViewProductActivity extends BaseAdminActivity {
         adminViewProductList = findViewById(R.id.adminViewProductList);
         adminViewProductList.setHasFixedSize(true);
         db = AppDatabase.getAppDatabase(this);
+        Intent intent = getIntent();
+        int catId = intent.getIntExtra("catId", 0);
+        int stock = intent.getIntExtra("stock", 0);
+        if (stock == 10){
+            products = db.productDAO().getOutOfStockProducts();
+        }
+        else if (catId != 0){
+            products = db.productDAO().getProductsByCategoryId(catId);
+        } else {
+            products = db.productDAO().getAll();
+        }
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayout.VERTICAL);
         adminViewProductList.setLayoutManager(llm);
-        products = db.productDAO().getAll();
         CustomCardViewListener listener = new CustomCardViewListener() {
             @Override
             public void onItemClick(View view, int position) {

@@ -43,6 +43,7 @@ public class ProductDetailActivity extends BaseCustomerActivity {
     private RatingBar ratingBarAverage;
     private TextView txtTotalReview;
     private List<Review> reviewList;
+    private int productId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +63,10 @@ public class ProductDetailActivity extends BaseCustomerActivity {
         ratingBarAverage = findViewById(R.id.productDetailActivity_ratingBarTotal);
 
         Intent intent = getIntent();
-        final int productId = intent.getIntExtra("productId", 0);
+        productId = intent.getIntExtra("productId", 0);
         db = AppDatabase.getAppDatabase(this);
 
-        reviewList = db.reviewDAO().getAll();
+        reviewList = db.reviewDAO().getAllReviewByProductId(productId);
 
         final Product product = db.productDAO().getProductByProductId(productId);
         Category category = db.categoryDAO().getCategoryByCategoryId(product.getCategoryId());
@@ -112,8 +113,9 @@ public class ProductDetailActivity extends BaseCustomerActivity {
     protected void onResume() {
         super.onResume();
 
-        reviewList = db.reviewDAO().getAll();
+        reviewList = db.reviewDAO().getAllReviewByProductId(productId);
         reviewAdapter = new ReviewAdapter(reviewList, db);
+        recyclerView.setAdapter(reviewAdapter);
         reviewAdapter.notifyDataSetChanged();
 
         String s = String.format("%.2f", calculateAveragePoint(reviewList)) + " on 5";

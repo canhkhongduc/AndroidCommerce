@@ -51,7 +51,7 @@ public class CustomerMenuActivity extends BaseCustomerActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_menu);
         db = AppDatabase.getAppDatabase(this);
-        productList = db.productDAO().getAll();
+        productList = db.productDAO().getProductsByNumber(5);
 
         framePhone = findViewById(R.id.frame1);
         frameCar = findViewById(R.id.frame2);

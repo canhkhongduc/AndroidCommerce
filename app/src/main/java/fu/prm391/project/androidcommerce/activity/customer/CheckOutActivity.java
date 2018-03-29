@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -68,7 +69,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
         checkoutCardView.setLayoutManager(llm);
 
         final SharedPreferenceUtil util = new SharedPreferenceUtil();
-        orderItems = util.getCart(this,"cartItem");
+        orderItems = util.getCart(this, "cartItem");
         final ArrayListUtil listUtil = new ArrayListUtil();
         double total = listUtil.getTotalFromList(this, orderItems);
         totalPrice.setText(new DecimalFormat("#,###.##").format(total) + "đ");
@@ -89,7 +90,7 @@ public class CheckOutActivity extends BaseCustomerActivity {
                 ivAddQuantity.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        tvQuantityEditCart.setText("" + (Integer.parseInt(tvQuantityEditCart.getText().toString())+1));
+                        tvQuantityEditCart.setText("" + (Integer.parseInt(tvQuantityEditCart.getText().toString()) + 1));
                     }
                 });
                 ivMinusQuantity.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +106,21 @@ public class CheckOutActivity extends BaseCustomerActivity {
                 ivDone.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        orderItem.setQuantity(Integer.parseInt(tvQuantityEditCart.getText().toString()));
+                        int newQuantity = Integer.parseInt(tvQuantityEditCart.getText().toString());
+
+                        SharedPreferenceUtil util = new SharedPreferenceUtil();
+                        ArrayList<OrderItem> orderItemList = util.getCart(CheckOutActivity.this, "cartItem");
+
+                        for (OrderItem orderItem : orderItemList) {
+                            if (orderItem.getProductId() == orderItems.get(position).getProductId()) {
+                                orderItem.setQuantity(newQuantity);
+                                break;
+                            }
+                        }
+
+                        util.addToCart(CheckOutActivity.this, orderItemList, "cartItem");
+
+                        orderItem.setQuantity(newQuantity);
                         orderItems.remove(position);
                         if (Integer.parseInt(tvQuantityEditCart.getText().toString()) != 0) {
                             orderItems.add(position, orderItem);
@@ -113,14 +128,30 @@ public class CheckOutActivity extends BaseCustomerActivity {
                         editDialog.dismiss();
                         totalPrice.setText(listUtil.getTotalFromList(CheckOutActivity.this, orderItems) + "00 VND");
                         adapter.notifyDataSetChanged();
+
+                        invalidateOptionsMenu();
                     }
                 });
 
             }
-            public void onItemRemove(View view, int position){
+
+            public void onItemRemove(View view, int position) {
+                SharedPreferenceUtil util = new SharedPreferenceUtil();
+                ArrayList<OrderItem> orderItemList = util.getCart(CheckOutActivity.this, "cartItem");
+
+                for (OrderItem orderItem : orderItemList) {
+                    if (orderItem.getProductId() == orderItems.get(position).getProductId()) {
+                        orderItemList.remove(orderItem);
+                        break;
+                    }
+                }
+
+                util.addToCart(CheckOutActivity.this, orderItemList, "cartItem");
+
                 orderItems.remove(position);
                 totalPrice.setText(listUtil.getTotalFromList(CheckOutActivity.this, orderItems) + "00 VND");
                 adapter.notifyDataSetChanged();
+                invalidateOptionsMenu();
             }
         };
         adapter = new OrderItemAdapter(orderItems, CheckOutActivity.this, listener);
@@ -133,13 +164,13 @@ public class CheckOutActivity extends BaseCustomerActivity {
                         currentTime, null, null, true, false);
                 db.orderDAO().insert(order);
                 Order order1 = db.orderDAO().getLastInsertedOrder(userId);
-                for (OrderItem orderItem: orderItems) {
+                for (OrderItem orderItem : orderItems) {
                     orderItem.setOrderId(order1.getOrderId());
                     db.orderItemDAO().insert(orderItem);
                     Product product = db.productDAO().getProductByProductId(orderItem.getProductId());
                     db.productDAO().updateProductStock(product.getProductId(), product.getStock() - orderItem.getQuantity());
                 }
-                util.removePreference(CheckOutActivity.this,"cartItem");
+                util.removeCart(CheckOutActivity.this, "cartItem");
                 Toast.makeText(CheckOutActivity.this, "Ordered Successfully", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(CheckOutActivity.this, CheckOutSuccessActivity.class));
             }

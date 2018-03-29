@@ -20,6 +20,7 @@ import fu.prm391.project.androidcommerce.database.entity.Review;
 public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
     private static List<Review> reviewList;
     private AppDatabase db;
+    private boolean getUserReview;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView txtUser;
@@ -38,6 +39,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     public ReviewAdapter(List<Review> reviewList, AppDatabase db) {
         this.reviewList = reviewList;
         this.db = db;
+        getUserReview = false;
     }
 
     @Override
@@ -50,7 +52,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.txtUser.setText(db.userDAO().getUserByUserId(reviewList.get(position).getUserId()).getUsername());
+        if (!getUserReview) {
+            holder.txtUser.setText(db.userDAO().getUserByUserId(reviewList.get(position).getUserId()).getUsername());
+        } else {
+            holder.txtUser.setText(db.productDAO().getProductByProductId(reviewList.get(position).getProductId()).getProductName());
+        }
         holder.ratingBar.setRating((reviewList.get(position).getRating()));
         holder.txtContent.setText(reviewList.get(position).getDescription());
     }
@@ -58,5 +64,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return reviewList.size();
+    }
+
+    public void setGetUserReview(boolean getUserReview) {
+        this.getUserReview = getUserReview;
     }
 }

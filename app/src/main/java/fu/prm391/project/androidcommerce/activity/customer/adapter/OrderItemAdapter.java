@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import fu.prm391.project.androidcommerce.R;
@@ -44,7 +45,7 @@ public class OrderItemAdapter extends RecyclerView.Adapter<OrderItemViewHolder> 
         Product product = db.productDAO().getProductByProductId(orderItem.getProductId());
         holder.ivProductCheckOut.setImageURI(Uri.parse(product.getProductImagePath()));
         holder.tvProductNameCheckOut.setText(product.getProductName());
-        holder.tvProductPriceCheckOut.setText(product.getProductPrice() + "00 VND");
+        holder.tvProductPriceCheckOut.setText(new DecimalFormat("#,###.##").format(product.getProductPrice()) + "đ");
         holder.tvProductDescriptionCheckOut.setText(product.getProductDescription());
         holder.tvOrderItemQuantityCheckOut.setText("" + orderItem.getQuantity());
     }

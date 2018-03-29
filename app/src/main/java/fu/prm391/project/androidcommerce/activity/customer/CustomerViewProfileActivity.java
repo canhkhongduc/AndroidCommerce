@@ -26,6 +26,8 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
     private Button btnBackToShop;
     private final int PICK_IMAGE = 200;
     private Uri selectedImage;
+    private TextView txtUsername;
+    private TextView txtReview;
     User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,24 +35,29 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
         setContentView(R.layout.activity_customer_view_profile);
         db = AppDatabase.getAppDatabase(this);
         util = new SharedPreferenceUtil();
-        int userId = util.getUser(this);
-        user = db.userDAO().getUserByUserId(userId);
-        List<Order> orders = db.orderDAO().getOrdersByUserId(userId);
+//        int userId = util.getUser(this);
+//        user = db.userDAO().getUserByUserId(userId);
+//        List<Order> orders = db.orderDAO().getOrdersByUserId(userId);
         tvOrderNumber = findViewById(R.id.tvProfileOrderNumber);
-        tvOrderNumber.setText("" + orders.size());
+//        tvOrderNumber.setText("" + orders.size());
         ivProfileAvatar = findViewById(R.id.ivCustomerAvatar);
         tvProfileId = findViewById(R.id.tvProfileId);
         tvProfileEmail = findViewById(R.id.tvProfileEmail);
         tvProfileAddress = findViewById(R.id.tvProfileAddress);
         tvProfilePhone = findViewById(R.id.tvProfilePhone);
+        txtUsername = findViewById(R.id.activityCustomerProfile_username);
+        txtReview = findViewById(R.id.tvProfileReviewNumber);
+
         if (user.getUserImagePath() != "" && user.getUserImagePath() != null) {
           ivProfileAvatar.setImageURI(Uri.parse(user.getUserImagePath()));
         }
-        tvProfileId.setText(""+ userId);
+//        tvProfileId.setText(""+ userId);
         tvProfileEmail.setText(user.getEmail());
         tvProfilePhone.setText(user.getPhone());
         tvProfileAddress.setText(user.getAddress());
         btnBackToShop = findViewById(R.id.btnBackToShop);
+//        txtUsername.setText(db.userDAO().getUserByUserId(util.getUser(this)).getUsername());
+//        txtReview.setText(String.valueOf(db.reviewDAO().countReviewsByUserId(util.getUser(this))));
 
         ivProfileAvatar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +79,12 @@ public class CustomerViewProfileActivity extends BaseCustomerActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(CustomerViewProfileActivity.this, CustomerViewOrderActivity.class));
+            }
+        });
+        txtReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomerViewProfileActivity.this, UserReviewViewActivity.class));
             }
         });
     }

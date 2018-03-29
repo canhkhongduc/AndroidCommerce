@@ -28,13 +28,13 @@ public class CustomerViewOrderActivity extends BaseCustomerActivity {
         setContentView(R.layout.activity_customer_view_order);
         db = AppDatabase.getAppDatabase(this);
         util = new SharedPreferenceUtil();
-        int userId =  util.getUser(this);
+//        int userId =  util.getUser(this);
         customerViewOrders = findViewById(R.id.customerOrderList);
         customerViewOrders.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayout.VERTICAL);
         customerViewOrders.setLayoutManager(llm);
-        orders = db.orderDAO().getOrdersByUserId(userId);
+//        orders = db.orderDAO().getOrdersByUserId(userId);
         OrderAdapter adapter = new OrderAdapter(orders, this, new CustomCardViewListener() {
             @Override
             public void onItemClick(View view, int position) {

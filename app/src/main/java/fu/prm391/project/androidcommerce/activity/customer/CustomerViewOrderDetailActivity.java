@@ -43,10 +43,7 @@ public class CustomerViewOrderDetailActivity extends BaseCustomerActivity {
             @Override
             public void onClick(View view) {
                 db.orderDAO().updateOrderStatus(orderId, true);
-                Intent intent1 = new Intent(CustomerViewOrderDetailActivity.this, CustomerReviewActivity.class);
-                intent1.putExtra("orderId", orderId);
-                startActivity(intent1);
-
+                btnReceiveProducts.setVisibility(View.GONE);
             }
         });
     }

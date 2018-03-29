@@ -6,36 +6,36 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fu.prm391.project.androidcommerce.R;
-import fu.prm391.project.androidcommerce.activity.admin.AdminHomeActivity;
-import fu.prm391.project.androidcommerce.activity.admin.AdminViewOrderActivity;
-import fu.prm391.project.androidcommerce.activity.customer.CustomerMenuActivity;
-import fu.prm391.project.androidcommerce.controller.LoginController;
-import fu.prm391.project.androidcommerce.controller.listener.LoginListener;
-import fu.prm391.project.androidcommerce.database.AppDatabase;
-import fu.prm391.project.androidcommerce.database.entity.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
-public class LoginActivity extends AppCompatActivity implements LoginListener {
+import fu.prm391.project.androidcommerce.R;
+import fu.prm391.project.androidcommerce.activity.customer.CustomerMenuActivity;
+import fu.prm391.project.androidcommerce.firebase.model.User;
+
+public class LoginActivity extends AppCompatActivity {
     private TextView btnRegister;
     private Button btnLogin;
     private TextInputLayout etLoginUsername;
     private TextInputLayout etLoginPassword;
-    private AppDatabase db;
-    private LoginController loginController;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        db = AppDatabase.getAppDatabase(this);
-
-        loginController = new LoginController(this, db);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.txtRegister);
@@ -49,17 +49,44 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
     private class btnLoginListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            String username = etLoginUsername.getEditText().getText().toString();
-            String password = etLoginPassword.getEditText().getText().toString();
+            final String username = etLoginUsername.getEditText().getText().toString();
+            final String password = etLoginPassword.getEditText().getText().toString();
+
+            Query query = databaseReference.child("users").orderByChild("username").equalTo(username);
 
             if (username.trim().length() == 0 || password.trim().length() == 0) {
                 Toast.makeText(LoginActivity.this, "Please enter your username and password", Toast.LENGTH_LONG).show();
                 return;
             }
 
-            User user = new User(username, password, null, null, null,null, -1);
+            ValueEventListener userListener = new ValueEventListener() {
+                User user;
+                String userId;
 
-            loginController.login(user); //After LoginAsyncTask finishes, login() or loginFailed() will be called
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("test", dataSnapshot.toString());
+                    for (DataSnapshot singleSnapshot : dataSnapshot.getChildren()) {
+                        user = singleSnapshot.getValue(User.class);
+                        userId = singleSnapshot.getKey();
+                    }
+
+                    if (user.getPassword().equals(password)) {
+                        SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                        SharedPreferences.Editor preferenceEditor = preference.edit();
+                        preferenceEditor.putString("userId", userId).apply();
+                        Intent intent = new Intent(LoginActivity.this, CustomerMenuActivity.class);
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            query.addListenerForSingleValueEvent(userListener);
         }
     }
 
@@ -69,34 +96,5 @@ public class LoginActivity extends AppCompatActivity implements LoginListener {
             Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void login(final int userId) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                User user = db.userDAO().getUserByUserId(userId);
-                if (user.getUserType() == 1) {
-                    startActivity(new Intent(LoginActivity.this, AdminHomeActivity.class));
-                } else {
-                    SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor preferenceEditor = preference.edit();
-                    preferenceEditor.putInt("userId", user.getUserId()).apply();
-                    Intent intent = new Intent(LoginActivity.this, CustomerMenuActivity.class);
-                    startActivity(intent);
-                }
-            }
-        });
-    }
-
-    @Override
-    public void loginFailed(String message) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

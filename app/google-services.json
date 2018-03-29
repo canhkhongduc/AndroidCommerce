@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "29238501473",
+    "firebase_url": "https://androidecommerce-9cd8a.firebaseio.com",
+    "project_id": "androidecommerce-9cd8a",
+    "storage_bucket": "androidecommerce-9cd8a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:29238501473:android:f7f93f9c69206e19",
+        "android_client_info": {
+          "package_name": "fu.prm391.project.androidcommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "29238501473-n221eoltlm1tk0vr67lf7nfskb8abli7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqfqIeyQ_uCp_UflCO-tRwd8I5kMnOSIs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -26,14 +26,14 @@ public class SharedPreferenceUtil {
         SharedPreferences.Editor editor = preferences.edit();
         Gson gson = new Gson();
         String json = gson.toJson(list);
-        editor.putString(key, json);
+        editor.putString(key + getUser(context), json);
         editor.apply();
     }
 
     public ArrayList<OrderItem> getCart(Context context, String key) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         Gson gson = new Gson();
-        String json = preferences.getString(key, null);
+        String json = preferences.getString(key + getUser(context), null);
         Type type = new TypeToken<ArrayList<OrderItem>>() {
         }.getType();
         return gson.fromJson(json, type);
@@ -46,15 +46,23 @@ public class SharedPreferenceUtil {
         editor.apply();
     }
 
+    public void removeCart(Context context, String key) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.remove(key + getUser(context));
+        editor.apply();
+    }
+
     public void destroyPreference(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
         editor.clear();
         editor.commit();
     }
-    public int getUser(Context context){
+
+    public String getUser(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        int userId =  preferences.getInt("userId", 0);
+        String userId = preferences.getString("userId", null);
         return userId;
     }
 }

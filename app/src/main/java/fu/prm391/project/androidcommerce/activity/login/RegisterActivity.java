@@ -1,36 +1,36 @@
 package fu.prm391.project.androidcommerce.activity.login;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.UUID;
+
 import fu.prm391.project.androidcommerce.R;
 import fu.prm391.project.androidcommerce.controller.RegisterController;
-import fu.prm391.project.androidcommerce.controller.listener.RegisterListener;
-import fu.prm391.project.androidcommerce.database.AppDatabase;
-import fu.prm391.project.androidcommerce.database.entity.User;
+import fu.prm391.project.androidcommerce.firebase.model.User;
 
-public class RegisterActivity extends AppCompatActivity implements RegisterListener {
+public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout etUsername;
     private TextInputLayout etPassword;
     private TextInputLayout etEmail;
     private TextInputLayout etPhone;
     private TextInputLayout etAddress;
     private Button btnSignup;
-    private AppDatabase db;
-    private RegisterController registerController;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        db = AppDatabase.getAppDatabase(this);
-        registerController = new RegisterController(this, db);
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
@@ -55,20 +55,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterListe
                 Toast.makeText(RegisterActivity.this, "Please fill all the credentials!", Toast.LENGTH_LONG).show();
                 return;
             } else {
-                User user = new User(username, password, email, phone, address,null, db.userTypeDAO().TYPE_USER);
+                User user = new User(username, password, email, phone, address, "", 2);
 
-                registerController.register(user); //After RegisterAsyncTask finishes, registerDone() will be called
+                String key = UUID.randomUUID().toString();
+                databaseReference.child("users").child(key).setValue(user);
             }
         }
-    }
-
-    @Override
-    public void registerDone(final String message) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-            }
-        });
     }
 }

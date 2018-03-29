@@ -25,7 +25,9 @@ public class CheckOutSuccessActivity extends BaseCustomerActivity {
         btnCustomerBackToShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CheckOutSuccessActivity.this, CustomerMenuActivity.class));
+                Intent intent = new Intent(CheckOutSuccessActivity.this, CustomerMenuActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }

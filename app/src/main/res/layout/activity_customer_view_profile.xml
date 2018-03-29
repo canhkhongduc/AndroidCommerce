@@ -27,6 +27,7 @@
                 android:src="@drawable/user_default" />
 
             <TextView
+                android:id="@+id/activityCustomerProfile_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

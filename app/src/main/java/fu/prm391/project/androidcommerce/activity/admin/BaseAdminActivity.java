@@ -28,21 +28,23 @@ public class BaseAdminActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_product:
-                        Log.d("navadmin", "" + R.id.nav_admin_home);
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
-                        return true;
+                        break;
                     case R.id.nav_category:
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewCategoryActivity.class));
-                        return true;
+                        break;
                     case R.id.nav_user:
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewUserActivity.class));
-                        return true;
+                        break;
                     case R.id.nav_order:
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewOrderActivity.class));
-                        return true;
+                        break;
                     case R.id.nav_admin_home:
                         startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
-                        return true;
+                        break;
+                    case R.id.nav_review:
+                        startActivity(new Intent(BaseAdminActivity.this, AdminViewReviewActivity.class));
+                        break;
                 }
                 item.setChecked(true);
                 drawerLayout.closeDrawers();
@@ -62,21 +64,29 @@ public class BaseAdminActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.nav_product:
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
-                return true;
+                break;
             case R.id.nav_category:
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewCategoryActivity.class));
-                return true;
+                break;
             case R.id.nav_user:
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewUserActivity.class));
-                return true;
+                break;
             case R.id.nav_order:
                 startActivity(new Intent(BaseAdminActivity.this, AdminViewOrderActivity.class));
-                return true;
+                break;
             case R.id.nav_logout:
                 util = new SharedPreferenceUtil();
                 util.destroyPreference(this);
-                startActivity(new Intent(BaseAdminActivity.this, LoginActivity.class));
-
+                Intent intent = new Intent(BaseAdminActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                break;
+            case R.id.nav_admin_home:
+                startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
+                break;
+            case R.id.nav_review:
+                startActivity(new Intent(BaseAdminActivity.this, AdminViewReviewActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
