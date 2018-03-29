@@ -28,7 +28,6 @@ public class BaseAdminActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.nav_product:
-                        Log.d("navadmin", "" + R.id.nav_admin_home);
                         startActivity(new Intent(BaseAdminActivity.this, AdminViewProductActivity.class));
                         return true;
                     case R.id.nav_category:
@@ -42,6 +41,9 @@ public class BaseAdminActivity extends AppCompatActivity {
                         return true;
                     case R.id.nav_admin_home:
                         startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
+                        return true;
+                    case R.id.nav_review:
+                        startActivity(new Intent(BaseAdminActivity.this, AdminViewReviewActivity.class));
                         return true;
                 }
                 item.setChecked(true);
@@ -76,7 +78,12 @@ public class BaseAdminActivity extends AppCompatActivity {
                 util = new SharedPreferenceUtil();
                 util.destroyPreference(this);
                 startActivity(new Intent(BaseAdminActivity.this, LoginActivity.class));
-
+            case R.id.nav_admin_home:
+                startActivity(new Intent(BaseAdminActivity.this, AdminHomeActivity.class));
+                return true;
+            case R.id.nav_review:
+                startActivity(new Intent(BaseAdminActivity.this, AdminViewReviewActivity.class));
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
